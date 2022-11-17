@@ -1,6 +1,6 @@
 initialize project setting:
 
-1) clone repository
+1) clone repository - https://github.com/Galor-sw/Billing-TEAM.git
 2) open terminal
 3) npm init -f
 4) npm i express --save
