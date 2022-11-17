@@ -1,7 +1,7 @@
 initialize project setting:
 
 1) clone repository
-2) open teminal
+2) open terminal
 3) npm init -f
 4) npm i express --save
 5) npm i nodemon --save--dev
