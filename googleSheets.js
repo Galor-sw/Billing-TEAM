@@ -8,7 +8,9 @@ const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
 
 const CREDENTIALS= JSON.parse(fs.readFileSync('credentials.json'));
 
-const getRow = async () => {
+
+//this function can provide data by any parameter, in its null it will provide the whole table
+const getRow = async (anyParam) => {
     //use service account creds
     await doc.useServiceAccountAuth({
         client_email : CREDENTIALS.client_email,
@@ -26,12 +28,15 @@ const getRow = async () => {
 
     for (let index = 0; index < rows.length;index++ ){
         const row = rows[index];
-        console.log('user_name: ', row.user_name);
-        console.log('password: ', row.password);
+        if(anyParam){
+            console.log(anyParam,': ', row[anyParam]);
+        }else {
+            console.log('user_name: ', row.user_name);
+            console.log('password: ', row.password);
+        }
     }
 };
 
-getRow('email@gmail.com');
 
 const addRow = async (rows) =>{
     //use service account creds
@@ -49,16 +54,4 @@ const addRow = async (rows) =>{
     }
 };
 
-let rows = [{
-    email: 'test1@gmail.com',
-    user_name: 'test1',
-    phone: '0512344121',
-    password: '!@$$!@E'
-},{
-    email: 'test2@gmail.com',
-    user_name: 'test2',
-    phone: '0513453242',
-    password: '!&^%$^##'
-}];
-
-addRow(rows);
+module.exports = {getRow, addRow};
