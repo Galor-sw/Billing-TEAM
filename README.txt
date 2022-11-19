@@ -6,7 +6,7 @@ initialize project setting:
 4) npm i express --save
 5) npm i nodemon --save--dev
 6) npm i ejs googleapis
-7)  npm i google-spreadsheet --save
+7) npm i google-spreadsheet --save
 
 
 go to package.json script and write:
@@ -15,6 +15,7 @@ go to package.json script and write:
     "dev" : "nodemon index.js",
     "start": "node index.js"}
 
+create json file : credentials.json, ask gal or to send you the details - its included password, so it cant be uploaded to the git
 
 how to handle git:
 1) create new branch with your own branch name
