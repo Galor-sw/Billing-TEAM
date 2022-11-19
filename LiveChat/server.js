@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const socketio = require('socket.io');
-const formatMessage = require('../../../Desktop/dev/Node/LiveChat/utils/messages');
+const formatMessage = require('./utils/messages');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,4 +42,8 @@ io.on('connection', socket => {
 
 
 // Init listener
-server.listen(PORT, () => console.log(`server running on ${PORT}`));
+const turnOnServerChat = () => {
+   server.listen(PORT, () => console.log(`server running on ${PORT}`));
+}
+
+module.exports = {turnOnServerChat};
