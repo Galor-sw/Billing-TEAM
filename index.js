@@ -1,4 +1,4 @@
-const GoogleSheet = require('./googleSheets');
+const GoogleSheet = require('./googleSheets/googleSheets');
 const chatServer = require('./LiveChat/server');
 
 
