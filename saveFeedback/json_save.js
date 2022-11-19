@@ -27,7 +27,6 @@ for  ( let i in json.users)
         }
     }
 
-console.log("sjkj");
 fs.writeFileSync('./bec.json', JSON.stringify(json, null, 2));
 
 
