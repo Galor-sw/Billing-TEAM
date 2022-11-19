@@ -1,0 +1,20 @@
+{
+  "users":
+  [
+    {
+    "email": "gildavidi75@gmail.com",
+    "free_text": "I Love them",
+    "rate": "10",
+    "answers":
+      {
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "Speed,Safety",
+        "customer_support": "no"
+      }
+    },
+    {
+      "email": "galor@gmail.com"
+    }
+  ]
+}
