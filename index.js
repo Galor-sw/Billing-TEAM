@@ -1,16 +1,23 @@
 const GoogleSheet = require('./googleSheets');
+
 GoogleSheet.getRow();
 
 let rows = [{
     email: 'test1@gmail.com',
-    user_name: 'test1',
-    phone: '0512344121',
-    password: '!@$$!@E'
+    free_text: 'test1',
+    rate: '9',
+    recommended: 'no',
+    choose_again : 'no',
+    improvement: 'pace',
+    customer_support: 'no'
 },{
-    email: 'test2@gmail.com',
-    user_name: 'test2',
-    phone: '0513453242',
-    password: '!&^%$^##'
+    email: 'test1@gmail.com',
+    free_text: 'test1',
+    rate: '8',
+    recommended: 'yes',
+    choose_again : 'yes',
+    improvement: 'clear',
+    customer_support: 'yes'
 }];
 
 //GoogleSheet.addRow(rows);

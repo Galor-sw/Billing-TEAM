@@ -31,8 +31,13 @@ const getRow = async (anyParam) => {
         if(anyParam){
             console.log(anyParam,': ', row[anyParam]);
         }else {
-            console.log('user_name: ', row.user_name);
-            console.log('password: ', row.password);
+            console.log('email: ', row.email);
+            console.log('free_text: ', row.free_text);
+            console.log('rate: ', row.rate);
+            console.log('recommended: ', row.recommended);
+            console.log('choose_again: ', row.choose_again);
+            console.log('improvement: ', row.improvement);
+            console.log('customer_support: ', row.customer_support);
         }
     }
 };
