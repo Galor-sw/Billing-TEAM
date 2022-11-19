@@ -1,4 +1,8 @@
 const GoogleSheet = require('./googleSheets');
+const chatServer = require('./LiveChat/server');
+
+
+//chatServer.turnOnServerChat();
 
 GoogleSheet.getRow();
 

@@ -7,6 +7,8 @@ initialize project setting:
 5) npm i nodemon --save--dev
 6) npm i ejs googleapis
 7) npm i google-spreadsheet --save
+8) npm i socket.io
+9) npm i moment
 
 
 go to package.json script and write:
