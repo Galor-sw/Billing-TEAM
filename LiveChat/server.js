@@ -34,7 +34,6 @@ const io = socketio(server);
 
 // Runs when client connects to our sever
 io.on('connection', socket => {
-   console.log("connected");
    socket.on("joinChat", ({username}) => {
 
       socket.emit('message', formatMessage(admin, `Hey ${username}, welcome to support chat`));
@@ -53,5 +52,10 @@ io.on('connection', socket => {
    });
 });
 
-//init listener
-server.listen(PORT, () => console.log(`server running on ${PORT}`));
+const turnOnServerChat = () => {
+
+   //init listener
+   server.listen(PORT, () => console.log(`server running on ${PORT}`));
+}
+
+module.exports = {turnOnServerChat};
