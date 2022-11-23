@@ -1,17 +1,36 @@
-const express = require('express');
-const path = require('path');
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 
-const app = express();
 const PORT = process.env.PORT || 3000;
-const server = http.createServer(app);
-const io = socketio(server);
 const admin = 'Chat Admin';
 
-// Set static folder
-app.use(express.static(path.join(__dirname, 'Frontend')))
+// Create server
+const server = http.createServer((req,res) => {
+   let pathname = url.parse(req.url).pathname;
+   let ext = path.extname(pathname);
+   if (ext){
+      if (ext === '.css'){
+         res.writeHead(200, {'Content-Type': 'text/css'});
+      }
+      else if(ext === '.js'){
+         res.writeHead(200, {'Content-Type': 'text/javascript'});
+      }
+      let file = fs.createReadStream(__dirname + pathname);
+      file.pipe(res);
+   }
+   else{
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      let file = fs.createReadStream('./Frontend/index.html')
+      file.pipe(res);
+   }
+});
+
+// create socket.io to server
+const io = socketio(server);
 
 // Runs when client connects to our sever
 io.on('connection', socket => {
@@ -28,21 +47,14 @@ io.on('connection', socket => {
       });
 
       socket.on('close', msg => {
-         console.log(msg);
          socket.broadcast.emit('message', formatMessage(admin, `${msg.user} ${msg.text}`));
       });
-
-      // socket.on('disconnect', msg => {
-      //    console.log(msg);
-      //    socket.broadcast.emit('message', formatMessage(admin, `${msg.user} ${msg.text}`));
-      // });
-
    });
 });
 
-
-// Init listener
 const turnOnServerChat = () => {
+
+   //init listener
    server.listen(PORT, () => console.log(`server running on ${PORT}`));
 }
 
