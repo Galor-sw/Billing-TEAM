@@ -4,10 +4,10 @@
     {
     "email": "gildavidi75@gmail.com",
     "free_text": "I Love them",
-    "rate": "5",
+    "rate": "4",
     "answers":
       {
-        "recommend": "yes",
+        "recommend": "no",
         "choose_again": "yes",
         "improvement": "Speed,Safety",
         "customer_support": "no"
@@ -18,6 +18,9 @@
     },
     {
       "email": "AdiCohen@gmail.com"
+    },
+    {
+      "email": "Itay45977@gmail.com"
     }
 
   ]

@@ -204,8 +204,15 @@ body {
     padding: 10px 20px;
 }
 
-.button_grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+.buttons
+{
+    position: absolute;
+    left:40%;
+}
+
+.buttons .button_style
+{
+    margin-top: 25px;
+    margin-right: 50px;
 }
