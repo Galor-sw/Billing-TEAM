@@ -39,23 +39,31 @@ const server = http.createServer(  (req,res) => {
         {
                 console.log(req.method);
                 console.log(pathname);
-        if(pathname== "/" && req.method=="POST") {
-                 if (!json.isExists(body)) {
-                        res.end("The email not exists, try again");
+                if(pathname== "/" && req.method=="POST") {
+                         if (!json.isExists(body)) {
+                                res.end("The email not exists, try again");
+                        }
+                        else
+                        {
+                                res.end("The email exist");
+                        }
                 }
-                else
-                {
-                        res.end("The email exist");
+                if(pathname== "/emailCheck" && req.method=="POST") {
+                        let feedBack = json.isHaveFeedBack(body);
+                        if (feedBack != '') {
+                                res.end(JSON.stringify(feedBack));
+                        } else {
+                                res.end("This user didnt give feedback already");
+                        }
                 }
-        }
-        if(pathname== "/emailCheck" && req.method=="POST") {
-                let feedBack = json.isHaveFeedBack(body);
-                if (feedBack != '') {
-                        res.end(JSON.stringify(feedBack));
-                } else {
-                        res.end("This user didnt give feedback already");
+                if(pathname== "/sendJson" && req.method=="POST") {
+                        if(json.writeFeedBack(JSON.parse(body)))
+                                res.end("The feedback was added");
+                        else
+                                res.end("The feedback wasnt added");
+
                 }
-        }
+
         });
 
 });

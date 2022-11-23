@@ -25,37 +25,27 @@ const isHaveFeedBack = (email) => {
 };
 
 
-// insert new feedback
-const email="galor@gmail.com"; //need to get from forms
-const rate = 5;
-const freeText="I Love them";
-const answers =
-{
-    recommend: "yes",
-    choose_again: "yes",
-    improvement: "Speed,Safety",
-    customer_support: "no"
-}
+// Write  feedback to json
 
-//
-// for  ( let i in json.users)
-//     {
-//         // find the user
-//         if (email == json.users[i].email)
-//         {
-//             //insert user's feedback to object
-//             json.users[i].freeText=freeText;
-//             json.users[i].rate=rate;
-//             json.users[i].answers=answers;
-//         }
-//     }
-//
-// fs.writeFileSync('./bec.json', JSON.stringify(json, null, 2));
+const writeFeedBack = (feedback) => {
+    for ( let i in json.users) {
+        if (feedback.email == json.users[i].email) {
+            json.users[i].free_text= feedback.free_text;
+            json.users[i].rate= feedback.rate;
+            json.users[i].answers= feedback.answers;
+            fs.writeFileSync('./feedback.json', JSON.stringify(json, null, 2));
+            return 'success';
 
+        }
+    }
+    return 'failed';
+};
 
 
 module.exports.isExists=isExists;
 module.exports.isHaveFeedBack=isHaveFeedBack;
+module.exports.writeFeedBack=writeFeedBack;
+
 
 
 

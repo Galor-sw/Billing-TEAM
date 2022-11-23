@@ -24,22 +24,22 @@
                         <div class="rate">
                             <label>Rate your experience:</label>
                             <div id="emoji">😑</div>
-                            <input type="range" min="0" max="4" step="1" id="customRange3" class="form-range"
+                            <input type="range" min="0" max="4" step="1" id="customRange3" class="form-range" name="emoji"
                                    onChange=changeRate(this.value);>
                         </div>
                     </div>
                     <div class="question">
 
-                        <label>will you recommend our service?</label>
+                        <label>Will you recommend our service?</label>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2">
+                            <input class="form-check-input" type="radio" name="q2" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2">
+                            <input class="form-check-input" type="radio" name="q2" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -50,22 +50,22 @@
                 <div class="second_part">
                     <div class="question">
 
-                        <label>will you choose our service again in the future?</label>
+                        <label>Will you choose our service again in the future?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3">
+                            <input class="form-check-input" type="radio" name="q3" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3">
+                            <input class="form-check-input" type="radio" name="q3" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
                         </div>
                     </div>
                     <div class="question">
-                        <label>what can we improve on our service?</label>
+                        <label>What can we improve on our service?</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" cols="30"
                                   name="comment"
                                   placeholder="Enter text here..."></textarea>
@@ -73,39 +73,43 @@
                 </div>
                 <div class="third_part">
                     <div class="question">
-                        <label>do you want customer support to contact you back?</label>
+                        <label>Do you want customer support to contact you back?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="q5" id="flexRadioDefault1" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5">
+                            <input class="form-check-input" type="radio" name="q5" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
                         </div>
                     </div>
                     <div class="question">
-                        <div class="button_grid">
-                            <div class="button_style">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <input class="button" type="submit" value="Send" name="submit">
-                            </div>
-                            <div class="button_style">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <input class="button" type="submit" value="Help" name="submit">
-                            </div>
-                        </div>
+                        <label>Free text</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" cols="30"
+                                  name="freeText"
+                                  placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
+            </div>
+            <div class="buttons">
+                    <div class="button_style">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input class="button" type="submit" value="Send" name="submit">
+                    </div>
+                    <div class="button_style">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input class="button" type="submit" value="Help" name="submit">
+                    </div>
             </div>
         </div>
 
