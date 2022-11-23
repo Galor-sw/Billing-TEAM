@@ -66,11 +66,10 @@ $("document").ready(() => {
                 .done(function(msg)
                 {
                     if(msg=="The feedback was added") {
-                        if($(this).val=="send")
-
-                        {
-                            window.location.replace("http://localhost:8080/loginAndForm/message.html");
-                        }
+                        if(e.target.value=="Send")
+                           window.location.replace("http://localhost:8080/loginAndForm/message.html");
+                        else
+                            window.location.replace("http://localhost:8080/LiveChat/Frontend/index.html");
                     }
                     else
                         alert("The feedback wasnt added");
