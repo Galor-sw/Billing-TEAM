@@ -1,5 +1,25 @@
 const { GoogleSpreadsheet }= require('google-spreadsheet');
 const fs = require('fs');
+let rowAddFormat =  {
+    email: "",
+    free_text: "",
+    rate: "",
+    recommended: "",
+    choose_again: "",
+    improvement: "",
+    customer_support: ""
+        };
+
+function rowToSheetFormat(row){
+    rowAddFormat.email = row.email;
+    rowAddFormat.free_text = row.free_text;
+    rowAddFormat.rate = row.rate;
+    rowAddFormat.recommended = row.answers.recommend;
+    rowAddFormat.choose_again = row.answers.choose_again;
+    rowAddFormat.improvement = row.answers.improvement;
+    rowAddFormat.customer_support = row.answers.customer_support;
+};
+
 
 const RESPONSES_SHEET_ID = '1Ktk1cyaazh-jz1KpSgM03_Ldi8ta9Qlq774YVKsjL6M';
 
@@ -28,35 +48,23 @@ const getRow = async (anyParam) => {
 
     for (let index = 0; index < rows.length;index++ ){
         const row = rows[index];
-        if(anyParam){
-            console.log(anyParam,': ', row[anyParam]);
-        }else {
-            console.log('email: ', row.email);
-            console.log('free_text: ', row.free_text);
-            console.log('rate: ', row.rate);
-            console.log('recommended: ', row.recommended);
-            console.log('choose_again: ', row.choose_again);
-            console.log('improvement: ', row.improvement);
-            console.log('customer_support: ', row.customer_support);
-        }
     }
 };
 
 
-const addRow = async (rows) =>{
+const addRow = async (row) =>{
     //use service account creds
     await doc.useServiceAccountAuth({
         client_email : CREDENTIALS.client_email,
         private_key : CREDENTIALS.private_key
     });
 
+    rowToSheetFormat(row);
+
     await doc.loadInfo();
     let sheet = doc.sheetsByIndex[0];
+    await sheet.addRow(rowAddFormat);
 
-    for (let index = 0; index < rows.length;index++ ) {
-        const row = rows[index];
-        await sheet.addRow(row);
-    }
 };
 
 module.exports = {getRow, addRow};
