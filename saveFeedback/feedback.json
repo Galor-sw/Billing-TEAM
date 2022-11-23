@@ -4,7 +4,7 @@
     {
     "email": "gildavidi75@gmail.com",
     "free_text": "I Love them",
-    "rate": "10",
+    "rate": "5",
     "answers":
       {
         "recommend": "yes",
@@ -15,6 +15,10 @@
     },
     {
       "email": "galor@gmail.com"
+    },
+    {
+      "email": "AdiCohen@gmail.com"
     }
+
   ]
 }

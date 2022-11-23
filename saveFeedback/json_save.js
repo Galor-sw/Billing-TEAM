@@ -1,6 +1,29 @@
 const fs = require("fs");
 const {stringify} = require("nodemon/lib/utils");
 const json = require("./feedback.json");
+// find if email exists
+const isExists= (email) => {
+    for ( let i in json.users) {
+        if (email == json.users[i].email) {
+            console.log(email);
+            return true;
+        }
+    }
+    return false;
+};
+
+// find if the user already gave feedback
+const isHaveFeedBack = (email) => {
+    for (let i in json.users) {
+        if (email == json.users[i].email) {
+            if (json.users[i].hasOwnProperty('rate'))
+                return json.users[i];
+            else
+                return '';
+        }
+    }
+};
+
 
 // insert new feedback
 const email="galor@gmail.com"; //need to get from forms
@@ -14,54 +37,25 @@ const answers =
     customer_support: "no"
 }
 
-
-for  ( let i in json.users)
-    {
-        // find the user
-        if (email == json.users[i].email)
-        {
-            //insert user's feedback to object
-            json.users[i].freeText=freeText;
-            json.users[i].rate=rate;
-            json.users[i].answers=answers;
-        }
-    }
-
-fs.writeFileSync('./bec.json', JSON.stringify(json, null, 2));
-
-
-const http =require('http');
-const port = 8080;
+//
+// for  ( let i in json.users)
+//     {
+//         // find the user
+//         if (email == json.users[i].email)
+//         {
+//             //insert user's feedback to object
+//             json.users[i].freeText=freeText;
+//             json.users[i].rate=rate;
+//             json.users[i].answers=answers;
+//         }
+//     }
+//
+// fs.writeFileSync('./bec.json', JSON.stringify(json, null, 2));
 
 
 
-console.log(`Listening on port ${port}`);
-
-
-const winston = require ("winston");
-
-const logger = winston.createLogger({
-    transports: [
-        new winston.transports.Console(),
-    ]
-});
+module.exports.isExists=isExists;
+module.exports.isHaveFeedBack=isHaveFeedBack;
 
 
 
-
-http.createServer((req, res) => {
-    res.writeHead(200);
-    res.end();
-}).listen(port);
-
-const express = require('express')
-const app = require("express/lib/router");
-
-app.use(express.json())    // <==== parse request body as JSON
-
-app.listen(8080)
-
-app.post('/', (req, res) => {
-    res.json({requestBody: req.body})  // <==== req.body will be a parsed JSON object
-    console.log(req.body)
-})
