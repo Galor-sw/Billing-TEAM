@@ -67,7 +67,7 @@ $("document").ready(() => {
                 {
                     if(msg=="The feedback was added") {
                         if(e.target.value=="Send")
-                           window.location.replace("http://localhost:8080/loginAndForm/message.html");
+                            window.location.replace("http://localhost:8080/loginAndForm/message.html");
                         else
                             window.location.replace("http://localhost:8080/LiveChat/Frontend/index.html");
                     }

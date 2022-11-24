@@ -4,7 +4,7 @@ let rowAddFormat =  {
     email: "",
     free_text: "",
     rate: "",
-    recommended: "",
+    recommend: "",
     choose_again: "",
     improvement: "",
     customer_support: ""
@@ -14,7 +14,7 @@ function rowToSheetFormat(row){
     rowAddFormat.email = row.email;
     rowAddFormat.free_text = row.free_text;
     rowAddFormat.rate = row.rate;
-    rowAddFormat.recommended = row.answers.recommend;
+    rowAddFormat.recommend= row.answers.recommend;
     rowAddFormat.choose_again = row.answers.choose_again;
     rowAddFormat.improvement = row.answers.improvement;
     rowAddFormat.customer_support = row.answers.customer_support;
@@ -51,15 +51,13 @@ const getRow = async (anyParam) => {
     }
 };
 
-
 const addRow = async (row) =>{
     //use service account creds
+    rowToSheetFormat(row);
     await doc.useServiceAccountAuth({
         client_email : CREDENTIALS.client_email,
         private_key : CREDENTIALS.private_key
     });
-
-    rowToSheetFormat(row);
 
     await doc.loadInfo();
     let sheet = doc.sheetsByIndex[0];
