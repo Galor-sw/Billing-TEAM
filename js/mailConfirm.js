@@ -16,17 +16,23 @@ $('input[name="submit"]').click( function(e) {
                     }
                     else
                     {
-                        $('input[name="mail"]').val(msg);
-                        $('input[name="mail"]').css({ 'color': 'red'});
+                        sendFailMassage(msg);
                     }
 
                 })
             .fail(function(xhr, status, error)
             {
                 console.log("failed send to server"+ error);
-
             });
     }
+    else
+    {
+        sendFailMassage("Enter Mail Please");
+    }
+});
+});
 
-});
-});
+function sendFailMassage(msg){
+    $('input[name="mail"]').val(msg);
+    $('input[name="mail"]').css({ 'color': 'red'});
+}
