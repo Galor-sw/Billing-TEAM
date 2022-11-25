@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+            src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+    <script src="../js/feedbackCheck.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Email Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body>
+<div class="login-box">
+    <h2>Feedback</h2>
+
+    <form action="#" method="post" autocomplete="on">
+        <div class="user-box2">
+            <div class="question_part">
+                <div class="first_part">
+                    <div class="question">
+                        <div class="rate">
+                            <label>Rate your experience:</label>
+                            <div id="emoji">😑</div>
+                            <input type="range" min="0" max="4" step="1" id="customRange3" class="form-range"
+                                   name="emoji"
+                                   onChange=changeRate(this.value);>
+                        </div>
+                    </div>
+                    <div class="question">
+
+                        <label>Will you recommend our service?</label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" value="yes">
+                            <label class="form-check-label">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" value="no">
+                            <label class="form-check-label">
+                                No
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="second_part">
+                    <div class="question">
+
+                        <label>Will you choose our service again in the future?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" value="yes">
+                            <label class="form-check-label">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" value="no">
+                            <label class="form-check-label">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>What can we improve on our service?</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" cols="30"
+                                  name="comment"
+                                  placeholder="Enter text here..."></textarea>
+                    </div>
+                </div>
+                <div class="third_part">
+                    <div class="question">
+                        <label>Do you want customer support to contact you back?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="flexRadioDefault1" value="yes">
+                            <label class="form-check-label">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" value="no">
+                            <label class="form-check-label">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Free text</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" cols="30"
+                                  name="freeText"
+                                  placeholder="Enter text here..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                    <div class="button_style">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input class="button" type="submit" value="Send" name="submit">
+                    </div>
+                    <div class="button_style">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input class="button" type="submit" value="Help" name="submit">
+                    </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

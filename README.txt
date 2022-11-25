@@ -5,6 +5,11 @@ initialize project setting:
 3) npm init -f
 4) npm i express --save
 5) npm i nodemon --save--dev
+6) npm i ejs googleapis
+7) npm i google-spreadsheet --save
+8) npm i socket.io
+9) npm i moment
+
 
 go to package.json script and write:
 "scripts": {
@@ -12,6 +17,7 @@ go to package.json script and write:
     "dev" : "nodemon index.js",
     "start": "node index.js"}
 
+create json file : credentials.json, ask gal or to send you the details - its included password, so it cant be uploaded to the git
 
 how to handle git:
 1) create new branch with your own branch name
@@ -19,3 +25,7 @@ how to handle git:
 3) update gal or so he can merge your branch
 4) check out back to remote/main
 5) after main checkout -> right click on remote/main, -> pull into 'main' using merge
+
+
+
+google sheets email address API - billing-sheets@student-billing-team.iam.gserviceaccount.com
