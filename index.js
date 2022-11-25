@@ -7,22 +7,3 @@ Server.start();
 
 //chatServer.turnOnServerChat();
 
-GoogleSheet.getRow();
-
-
-let rows = {
-    email: 'test1@gmail.com',
-    free_text: 'test1',
-    rate: '9',
-    answers:
-        {
-            "recommend": "yes",
-            "choose_again": "yes",
-            "improvement": "Speed,Safety",
-            "customer_support": "no"
-        }
-};
-
-
-
-GoogleSheet.addRow(rows);

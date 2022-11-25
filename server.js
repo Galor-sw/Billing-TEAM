@@ -4,9 +4,10 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const json =require('./saveFeedback/json_save.js');
+const {addRow} = require("./googleSheets/googleSheets");
 
 //create server
-const server = http.createServer(  (req,res) => {
+const server = http.createServer(   (req,res) => {
         let body = '';
         let pathname = url.parse(req.url).pathname;
         let ext = path.extname(pathname);
@@ -57,10 +58,16 @@ const server = http.createServer(  (req,res) => {
                         }
                 }
                 if(pathname== "/sendJson" && req.method=="POST") {
-                        if(json.writeFeedBack(JSON.parse(body)))
+                        let feedback =JSON.parse(body);
+
+                        if(json.writeFeedBack(JSON.parse(body))){
+                                addRow(feedback).then(r => (console.log('Row added to google sheet successfully')));
                                 res.end("The feedback was added");
-                        else
-                                res.end("The feedback wasnt added");
+                        }
+                        else{
+                                res.end("The feedback wasn't added");
+                        }
+
 
                 }
 
