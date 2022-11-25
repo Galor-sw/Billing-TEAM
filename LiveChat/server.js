@@ -54,8 +54,11 @@ io.on('connection', socket => {
 
 const turnOnServerChat = () => {
 
+
    //init listener
    server.listen(PORT, () => console.log(`server running on ${PORT}`));
 }
 
+
 module.exports = {turnOnServerChat};
+
