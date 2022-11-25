@@ -3,9 +3,7 @@ initialize project setting:
 1) clone repository - https://github.com/Galor-sw/Billing-TEAM.git
 2) open terminal
 3) npm init -f
-4) npm i express --save
 5) npm i nodemon --save--dev
-6) npm i ejs googleapis
 7) npm i google-spreadsheet --save
 8) npm i socket.io
 9) npm i moment
