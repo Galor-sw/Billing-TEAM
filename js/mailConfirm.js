@@ -16,8 +16,9 @@ $('input[name="submit"]').click( function(e) {
                     }
                     else
                     {
-                        $('input[name="mail"]').val(msg);
-                        $('input[name="mail"]').css({ 'color': 'red'});
+                        $('article').text(msg);
+                        $('article').css({'color': 'red'});
+
                     }
 
                 })
