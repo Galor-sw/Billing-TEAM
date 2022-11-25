@@ -5,5 +5,5 @@ const Server = require('./server.js');
 Server.createServer();
 Server.start();
 
-//chatServer.turnOnServerChat();
+chatServer.turnOnServerChat();
 

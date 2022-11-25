@@ -24,7 +24,7 @@ const server = http.createServer((req,res) => {
    }
    else{
       res.writeHead(200, {'Content-Type': 'text/html'});
-      let file = fs.createReadStream('./Frontend/index.html')
+      let file = fs.createReadStream('./LiveChat/Frontend/index.html')
       file.pipe(res);
    }
 });
