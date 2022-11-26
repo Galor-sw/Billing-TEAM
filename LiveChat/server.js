@@ -37,22 +37,22 @@ const io = socketio(server);
 
 // Runs when client connects to our sever
 io.on('connection', socket => {
-   socket.on("joinChat", ({username}) => {
+    socket.on("joinChat", ({username}) => {
 
-      socket.emit('message', formatMessage(admin, `Hey ${username}, welcome to support chat`));
+        socket.emit('message', formatMessage(admin, `Hey ${username}, welcome to support chat`));
 
-      socket.on('typing', (data) => {
-         socket.broadcast.emit('display', data)
-      })
+        socket.on('typing', (data) => {
+            socket.broadcast.emit('display', data)
+        })
 
-      socket.on('chatMessage', msg => {
-         io.emit('message', formatMessage(username, msg));
-      });
+        socket.on('chatMessage', msg => {
+            io.emit('message', formatMessage(username, msg));
+        });
 
-      socket.on('close', msg => {
-         socket.broadcast.emit('message', formatMessage(admin, `${msg.user} ${msg.text}`));
-      });
-   });
+        socket.on('close', msg => {
+            socket.broadcast.emit('message', formatMessage(admin, `${msg.user} ${msg.text}`));
+        });
+    });
 });
 
 const turnOnServerChat = () => {
