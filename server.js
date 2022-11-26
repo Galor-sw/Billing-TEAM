@@ -74,7 +74,7 @@ const server = http.createServer(   (req,res) => {
         });
 
 });
-const start = () => server.listen(port, () => serLogger.info(`listening on port ${port}`));
+const start = () => server.listen(port, () => serLogger.info(`Feedback server listening on port ${port}`));
 
 module.exports.createServer = http.createServer;
 module.exports.start = start;

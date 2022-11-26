@@ -8,14 +8,16 @@ $('input[name="submit"]').click( function(e) {
         $.post('http://localhost:8080/', mail)
             .done(function(msg)
                 {
-                    if(msg == "The email exists")
+                    console.log("successes send to server");
+                    console.log(msg);
+                    if(msg == "The email exist")
                     {
                         window.location.replace("http://localhost:8080/loginAndForm/form.html?mail="+mail);
                     }
                     else
                     {
-                        failed=document.getElementById("failmsg");
-                        failed.innerHTML = msg;
+                        $('input[name="mail"]').val(msg);
+                        $('input[name="mail"]').css({ 'color': 'red'});
                     }
 
                 })
@@ -24,10 +26,6 @@ $('input[name="submit"]').click( function(e) {
                 console.log("failed send to server"+ error);
 
             });
-    }
-    else
-    {
-        $('article').text("Please insert an email address");
     }
 
 });

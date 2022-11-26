@@ -22,6 +22,10 @@ body {
     border-radius: 10px;
 }
 
+#form-box {
+    padding-bottom: 80px;
+ }
+
 .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
@@ -62,6 +66,15 @@ body {
     color: #fff;
     pointer-events: none;
     transition: .5s;
+}
+
+.user-box2 > p {
+    color: #03e9f4;
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 5px;
 }
 
 .login-box .user-box label {
@@ -251,6 +264,7 @@ body {
 .buttons {
     position: absolute;
     left: 40%;
+    margin-top: 15px;
 }
 
 .buttons .button_style {
