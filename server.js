@@ -5,7 +5,10 @@ const url = require('url');
 const path = require('path');
 const json =require('./saveFeedback/json_save.js');
 const {addRow} = require("./googleSheets/googleSheets");
+const winston = require("winston");
+const logger = require(`./logger.js`);
 
+let serLogger = logger.log;
 //create server
 const server = http.createServer(   (req,res) => {
         let body = '';
@@ -38,8 +41,8 @@ const server = http.createServer(   (req,res) => {
         });
         req.on('end',()=>
         {
-                console.log(req.method);
-                console.log(pathname);
+                serLogger.info(req.method);
+                serLogger.info(pathname);
                 if(pathname== "/" && req.method=="POST") {
                          if (!json.isExists(body)) {
                                 res.end("The email not exists, try again");
@@ -61,7 +64,7 @@ const server = http.createServer(   (req,res) => {
                         let feedback =JSON.parse(body);
 
                         if(json.writeFeedBack(JSON.parse(body))){
-                                addRow(feedback).then(r => (console.log('Row added to google sheet successfully')));
+                                addRow(feedback).then(r => (serLogger.info('Row added to google sheet successfully')));
                                 res.end("The feedback was added");
                         }
                         else{
@@ -74,7 +77,7 @@ const server = http.createServer(   (req,res) => {
         });
 
 });
-const start = () => server.listen(port, () => console.log(`listening on port ${port}`));
+const start = () => server.listen(port, () => serLogger.info(`listening on port ${port}`));
 
 module.exports.createServer = http.createServer;
 module.exports.start = start;

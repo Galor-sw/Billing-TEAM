@@ -69,10 +69,14 @@ $("document").ready(() => {
                         if(e.target.value=="Send")
                             window.location.replace("http://localhost:8080/loginAndForm/message.html");
                         else
-                            window.location.replace("http://localhost:8080/LiveChat/Frontend/index.html");
+                        {
+                            let user = mail.split('@')[0];
+                            window.location.replace("http://localhost:3000?username=" + user );
+                        }
+
                     }
                     else
-                        alert("The feedback wasnt added");
+                        alert("The feedback wasn't added");
                 });
 
 
