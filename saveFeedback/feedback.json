@@ -2,13 +2,10 @@
   "users": [
     {
       "email": "gildavidi75@gmail.com",
-      "free_text": "you rock!",
+      "free_text": "",
       "rate": "4",
       "answers": {
-        "recommend": "no",
-        "choose_again": "no",
-        "improvement": "nothing on my mind",
-        "customer_support": "no"
+        "improvement": ""
       }
     },
     {
@@ -57,7 +54,7 @@
     },
     {
       "email": "alona@gmail.com",
-      "free_text": "",
+      "free_text": "happy new year",
       "rate": "3",
       "answers": {
         "recommend": "no",
@@ -68,6 +65,17 @@
     },
     {
       "email": "sufislate@hotmal.com"
+    },
+    {
+      "email": "ExistingMail@gmail.com",
+      "free_text": "I love JavaScript ",
+      "rate": "4",
+      "answers": {
+        "recommend": "yes",
+        "choose_again": "no",
+        "improvement": "You are all wonderfull people",
+        "customer_support": "no"
+      }
     },
     {
       "email": "ilidaniel@gmail.com",

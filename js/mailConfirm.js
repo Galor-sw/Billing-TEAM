@@ -6,7 +6,7 @@ $('input[name="submit"]').click( function(e) {
     let mail= $('input[name="mail"]').val();
     if(mail)
     {
-        $.post('http://localhost:8080/sendToForm', mail)
+        $.post('http://localhost:8080/emailCheck', mail)
             .done(function(msg)
                 {
                     if(msg == "The email exists")
