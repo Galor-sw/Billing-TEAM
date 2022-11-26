@@ -64,7 +64,12 @@
       }
     },
     {
-      "email": "sufislate@hotmal.com"
+      "email": "sufislate@hotmal.com",
+      "free_text": "",
+      "rate": "2",
+      "answers": {
+        "improvement": ""
+      }
     },
     {
       "email": "ExistingMail@gmail.com",

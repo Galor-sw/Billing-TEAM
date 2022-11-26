@@ -4,13 +4,17 @@ const chatMessages = document.querySelector('.chat-messages');
 const socket = io();
 
 // Typing...
-let typing=false;
-let timeout=undefined;
+let typing = false;
+let timeout = undefined;
 
 // Get username from URL
-const {username} = Qs.parse(location.search, {
-   ignoreQueryPrefix: true
+let {username} = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
 });
+
+if (username == undefined) {
+    username = 'Support';
+}
 
 // Client joined the chat
 socket.emit('joinChat', {username});
@@ -25,8 +29,8 @@ socket.on('message', message => {
 
 // Leave chat button
 disconnect.addEventListener('click', () => {
-    socket.emit('close', {user:username, text:"has diconnected..."});
-    socket.emit('disconnect', {user:username, text:"has diconnected..."});
+    socket.emit('close', {user: username, text: "has diconnected..."});
+    socket.emit('disconnect', {user: username, text: "has diconnected..."});
     socket.disconnect();
 });
 
@@ -57,35 +61,32 @@ function outputMessage(message) {
 }
 
 // Hide 'typing..'
-function  typingTimeout() {
-    typing=false;
-    socket.emit('typing', {user:username, typing:false});
+function typingTimeout() {
+    typing = false;
+    socket.emit('typing', {user: username, typing: false});
 }
 
 // Show 'typing..'
-$(document).ready(function(){
-    $('#msg').keypress((e)=>{
+$(document).ready(function () {
+    $('#msg').keypress((e) => {
         // if Not CR
-        if(e.which != 13){
-            typing=true;
-            socket.emit('typing', {user:username, typing:true});
+        if (e.which != 13) {
+            typing = true;
+            socket.emit('typing', {user: username, typing: true});
             clearTimeout(timeout);
-            timeout=setTimeout(typingTimeout, 3000);
-        }else{
+            timeout = setTimeout(typingTimeout, 3000);
+        } else {
             clearTimeout(timeout);
             typingTimeout();
         }
     });
 
-    socket.on('display', (data)=>{
-        if(data.typing == true)
-        {
+    socket.on('display', (data) => {
+        if (data.typing == true) {
             let typing = document.getElementById('typing-div');
             typing.innerHTML = `<p>${data.user} is typing...</p>`;
             typing.style.display = 'block';
-        }
-        else
-        {
+        } else {
             let typing = document.getElementById('typing-div');
             typing.style.display = 'none';
         }
