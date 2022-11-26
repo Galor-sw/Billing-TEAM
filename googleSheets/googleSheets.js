@@ -1,5 +1,5 @@
 const { GoogleSpreadsheet }= require('google-spreadsheet');
-const fs = require('fs');
+const fs = require('fs'); //for reading credentials
 let rowAddFormat =  {
     email: "",
     free_text: "",
@@ -25,7 +25,7 @@ const RESPONSES_SHEET_ID = '1Ktk1cyaazh-jz1KpSgM03_Ldi8ta9Qlq774YVKsjL6M';
 
 const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
 
-
+// Credentials for the service account
 const CREDENTIALS= JSON.parse(fs.readFileSync('credentials.json'));
 
 
@@ -46,8 +46,10 @@ const getRow = async (anyParam) => {
     //get all the rows
     let rows = await sheet.getRows();
 
+
     for (let index = 0; index < rows.length;index++ ){
         const row = rows[index];
+        console.log(row[anyParam]);
     }
 };
 
@@ -61,8 +63,20 @@ const addRow = async (row) =>{
 
     await doc.loadInfo();
     let sheet = doc.sheetsByIndex[0];
+
+    let rows = await sheet.getRows();
+
+    for (let index = 0; index < rows.length;index++ ){
+        const rowIndex = rows[index];
+        if(row.email === rowIndex.email){
+            await rows[index].delete();
+            break;
+        }
+    }
     await sheet.addRow(rowAddFormat);
 
 };
+
+
 
 module.exports = {getRow, addRow};
