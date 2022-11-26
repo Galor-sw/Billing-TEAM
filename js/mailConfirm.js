@@ -1,4 +1,4 @@
-
+// Input email confirmation
 $("document").ready(() => {
 $('input[name="submit"]').click( function(e) {
     e.preventDefault();
@@ -14,8 +14,7 @@ $('input[name="submit"]').click( function(e) {
                     }
                     else
                     {
-                        failed=document.getElementById("failmsg");
-                        failed.innerHTML = msg;
+                        document.getElementById("failmsg").innerHTML = msg;
                     }
 
                 })
@@ -25,9 +24,10 @@ $('input[name="submit"]').click( function(e) {
 
             });
     }
+    // Empty input
     else
     {
-        $('article').text("Please insert an email address");
+        document.getElementById("failmsg").innerHTML = "Please insert an email address";
     }
 
 });
