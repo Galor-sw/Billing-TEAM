@@ -1,3 +1,6 @@
+const logger = require(`./logger.js`);
+let serLogger = logger.log;
+
 function changeRate(val) {
     let emojis = ['😠', '😦', '😑', '😀', '😍'];
     document.getElementById("emoji").textContent = emojis[val];
@@ -12,8 +15,7 @@ let isHaveFeedBack =false;
 $.post('http://localhost:8080/emailCheck', mail)
     .done(function(msg)
     {
-        console.log("success send to server");
-        if(msg != "This user didnt give feedback already")
+        if(msg != "The user hasn't given a feedback yet")
         {
             isHaveFeedBack=true;
             let feedBack=JSON.parse(msg);
@@ -44,7 +46,7 @@ $.post('http://localhost:8080/emailCheck', mail)
     })
     .fail(function(xhr, status, error)
     {
-    console.log("failed send to server"+ error);
+    serLogger.error("failed send to server"+ error);
 
     });
 

@@ -6,7 +6,6 @@ const {addRow} = require("../googleSheets/googleSheets");
 const isExists= (email) => {
     for ( let i in json.users) {
         if (email == json.users[i].email) {
-            console.log(email);
             return true;
         }
     }

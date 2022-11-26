@@ -8,7 +8,7 @@ $('input[name="submit"]').click( function(e) {
         $.post('http://localhost:8080/', mail)
             .done(function(msg)
                 {
-                    if(msg == "The email exist")
+                    if(msg == "The email exists")
                     {
                         window.location.replace("http://localhost:8080/loginAndForm/form.html?mail="+mail);
                     }
