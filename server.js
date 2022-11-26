@@ -28,8 +28,9 @@ const server = http.createServer(   (req,res) => {
 
         }
         // for html files
-        else
+        else if (pathname =="/")
         {
+                serLogger.info("New connection to feedback form established");
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 let file = fs.createReadStream('./loginAndForm/log_in_form.html');
                 file.pipe(res);
@@ -40,7 +41,7 @@ const server = http.createServer(   (req,res) => {
         });
         req.on('end',()=>
         {
-                if(pathname== "/" && req.method=="POST") {
+                if(pathname== "/sendToForm" && req.method=="POST") {
                          if (!json.isExists(body)) {
                                 res.end("The email does not exist, try again");
                         }

@@ -47,9 +47,12 @@
     {
       "email": "dorhaim765@gmail.com",
       "free_text": "",
-      "rate": "2",
+      "rate": "4",
       "answers": {
-        "improvement": ""
+        "recommend": "no",
+        "choose_again": "yes",
+        "improvement": "nothing",
+        "customer_support": "yes"
       }
     },
     {
@@ -59,7 +62,7 @@
       "answers": {
         "recommend": "no",
         "choose_again": "no",
-        "improvement": "",
+        "improvement": "im blue da ba di da ba da",
         "customer_support": "no"
       }
     },
