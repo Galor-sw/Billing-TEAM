@@ -1,3 +1,4 @@
+// Input email confirmation
 
 $("document").ready(() => {
 $('input[name="submit"]').click( function(e) {
@@ -5,19 +6,16 @@ $('input[name="submit"]').click( function(e) {
     let mail= $('input[name="mail"]').val();
     if(mail)
     {
-        $.post('http://localhost:8080/', mail)
+        $.post('http://localhost:8080/sendToForm', mail)
             .done(function(msg)
                 {
-                    console.log("successes send to server");
-                    console.log(msg);
-                    if(msg == "The email exist")
+                    if(msg == "The email exists")
                     {
                         window.location.replace("http://localhost:8080/loginAndForm/form.html?mail="+mail);
                     }
                     else
                     {
-                        $('input[name="mail"]').val(msg);
-                        $('input[name="mail"]').css({ 'color': 'red'});
+                        document.getElementById("failmsg").innerHTML = msg;
                     }
 
                 })
@@ -25,8 +23,12 @@ $('input[name="submit"]').click( function(e) {
             {
                 console.log("failed send to server"+ error);
 
-            });
+            })
+        // Empty input
     }
-
+    else
+    {
+        document.getElementById("failmsg").innerHTML = "Please insert an email address";
+    }
 });
 });
