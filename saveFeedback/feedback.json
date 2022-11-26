@@ -2,12 +2,12 @@
   "users": [
     {
       "email": "gildavidi75@gmail.com",
-      "free_text": "The service is awesome!! ",
+      "free_text": "you rock!",
       "rate": "4",
       "answers": {
         "recommend": "no",
         "choose_again": "no",
-        "improvement": "Speed,Safety",
+        "improvement": "nothing on my mind",
         "customer_support": "no"
       }
     },
@@ -45,10 +45,23 @@
       }
     },
     {
-      "email": "dorhaim765@gmail.com"
+      "email": "dorhaim765@gmail.com",
+      "free_text": "",
+      "rate": "2",
+      "answers": {
+        "improvement": ""
+      }
     },
     {
-      "email": "alona@gmail.com"
+      "email": "alona@gmail.com",
+      "free_text": "",
+      "rate": "3",
+      "answers": {
+        "recommend": "no",
+        "choose_again": "no",
+        "improvement": "",
+        "customer_support": "no"
+      }
     },
     {
       "email": "sufislate@hotmal.com"
