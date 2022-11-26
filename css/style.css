@@ -33,12 +33,16 @@ body {
     position: relative;
 }
 
+.user-box {
+    margin-bottom: 30px;
+}
+
 .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -243,3 +247,4 @@ body {
     margin-top: 25px;
     margin-right: 50px;
 }
+
