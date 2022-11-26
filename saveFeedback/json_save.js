@@ -34,7 +34,7 @@ const writeFeedBack = (feedback) => {
             json.users[i].free_text= feedback.free_text;
             json.users[i].rate= feedback.rate;
             json.users[i].answers= feedback.answers;
-            fs.writeFileSync('./feedback.json', JSON.stringify(json, null, 2));
+            fs.writeFileSync('./saveFeedBack/feedback.json', JSON.stringify(json, null, 2));
             return 'success';
 
         }

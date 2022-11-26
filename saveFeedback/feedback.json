@@ -1,12 +1,10 @@
 {
-  "users":
-  [
+  "users": [
     {
-    "email": "gildavidi75@gmail.com",
-    "free_text": "I Love them",
-    "rate": "4",
-    "answers":
-      {
+      "email": "gildavidi75@gmail.com",
+      "free_text": "I Love them",
+      "rate": "4",
+      "answers": {
         "recommend": "no",
         "choose_again": "yes",
         "improvement": "Speed,Safety",
@@ -14,14 +12,37 @@
       }
     },
     {
-      "email": "galor@gmail.com"
+      "email": "galor@gmail.com",
+      "free_text": "11111",
+      "rate": "4",
+      "answers": {
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "2222",
+        "customer_support": "no"
+      }
     },
     {
-      "email": "AdiCohen@gmail.com"
+      "email": "AdiCohen@gmail.com",
+      "free_text": "OK ? ",
+      "rate": "1",
+      "answers": {
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "I am not satisfaied",
+        "customer_support": "no"
+      }
     },
     {
-      "email": "Itay45977@gmail.com"
+      "email": "Itay45977@gmail.com",
+      "free_text": "OK ? ",
+      "rate": "3",
+      "answers": {
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "You are all great people",
+        "customer_support": "yes"
+      }
     }
-
   ]
 }

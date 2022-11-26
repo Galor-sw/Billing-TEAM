@@ -5,7 +5,6 @@ const url = require('url');
 const path = require('path');
 const json =require('./saveFeedback/json_save.js');
 const {addRow} = require("./googleSheets/googleSheets");
-const winston = require("winston");
 const logger = require(`./logger.js`);
 
 let serLogger = logger.log;
