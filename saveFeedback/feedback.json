@@ -2,12 +2,12 @@
   "users": [
     {
       "email": "gildavidi75@gmail.com",
-      "free_text": "I Love them",
+      "free_text": "you rock!",
       "rate": "4",
       "answers": {
         "recommend": "no",
-        "choose_again": "yes",
-        "improvement": "Speed,Safety",
+        "choose_again": "no",
+        "improvement": "nothing on my mind",
         "customer_support": "no"
       }
     },
@@ -42,6 +42,42 @@
         "choose_again": "yes",
         "improvement": "You are all great people",
         "customer_support": "yes"
+      }
+    },
+    {
+      "email": "dorhaim765@gmail.com",
+      "free_text": "",
+      "rate": "4",
+      "answers": {
+        "recommend": "no",
+        "choose_again": "yes",
+        "improvement": "nothing",
+        "customer_support": "yes"
+      }
+    },
+    {
+      "email": "alona@gmail.com",
+      "free_text": "",
+      "rate": "3",
+      "answers": {
+        "recommend": "no",
+        "choose_again": "no",
+        "improvement": "im blue da ba di da ba da",
+        "customer_support": "no"
+      }
+    },
+    {
+      "email": "sufislate@hotmal.com"
+    },
+    {
+      "email": "ilidaniel@gmail.com",
+      "free_text": "yes yesyes",
+      "rate": "4",
+      "answers": {
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "Yes",
+        "customer_support": "no"
       }
     }
   ]

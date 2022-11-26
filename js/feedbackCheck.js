@@ -3,7 +3,6 @@ function changeRate(val) {
     document.getElementById("emoji").textContent = emojis[val];
 }
 
-
 let mail='';
 let urlParams = new URLSearchParams(window.location.search);
 mail= urlParams.get('mail');
@@ -12,8 +11,7 @@ let isHaveFeedBack =false;
 $.post('http://localhost:8080/emailCheck', mail)
     .done(function(msg)
     {
-        console.log("success send to server");
-        if(msg != "This user didnt give feedback already")
+        if(msg != "The user hasn't given a feedback yet")
         {
             isHaveFeedBack=true;
             let feedBack=JSON.parse(msg);
@@ -21,31 +19,27 @@ $.post('http://localhost:8080/emailCheck', mail)
             changeRate(feedBack.rate);
             if(feedBack.answers.recommend == "yes")
                 $(".form-check-input").eq(0).prop("checked", true);
-            else
+            else if (feedBack.answers.recommend == "no")
                 $(".form-check-input").eq(1).prop("checked", true);
 
             if(feedBack.answers.choose_again == "yes")
                 $(".form-check-input").eq(2).prop("checked", true);
-            else
+            else if (feedBack.answers.choose_again == "no")
                 $(".form-check-input").eq(3).prop("checked", true);
 
             $('textarea[name="comment"]').val(feedBack.answers.improvement);
 
             if(feedBack.answers.customer_support == "yes")
                 $(".form-check-input").eq(4).prop("checked", true);
-            else
+            else if (feedBack.answers.customer_support == "no")
                 $(".form-check-input").eq(5).prop("checked", true);
 
             $('textarea[name="freeText"]').val(feedBack.free_text);
         }
-
-
-
     })
     .fail(function(xhr, status, error)
     {
-    console.log("failed send to server"+ error);
-
+        console.error("failed send to server"+ error);
     });
 
 let json ={};
@@ -78,7 +72,5 @@ $("document").ready(() => {
                     else
                         alert("The feedback wasn't added");
                 });
-
-
         });
 });

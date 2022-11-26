@@ -28,8 +28,9 @@ const server = http.createServer(   (req,res) => {
 
         }
         // for html files
-        else
+        else if (pathname =="/")
         {
+                serLogger.info("New connection to feedback form established");
                 res.writeHead(200, {'Content-Type': 'text/html'});
                 let file = fs.createReadStream('./loginAndForm/log_in_form.html');
                 file.pipe(res);
@@ -40,15 +41,13 @@ const server = http.createServer(   (req,res) => {
         });
         req.on('end',()=>
         {
-                serLogger.info(req.method);
-                serLogger.info(pathname);
-                if(pathname== "/" && req.method=="POST") {
+                if(pathname== "/sendToForm" && req.method=="POST") {
                          if (!json.isExists(body)) {
-                                res.end("The email not exists, try again");
+                                res.end("The email does not exist, try again");
                         }
                         else
                         {
-                                res.end("The email exist");
+                                res.end("The email exists");
                         }
                 }
                 if(pathname== "/emailCheck" && req.method=="POST") {
@@ -56,7 +55,7 @@ const server = http.createServer(   (req,res) => {
                         if (feedBack != '') {
                                 res.end(JSON.stringify(feedBack));
                         } else {
-                                res.end("This user didnt give feedback already");
+                                res.end("The user hasn't given a feedback yet");
                         }
                 }
                 if(pathname== "/sendJson" && req.method=="POST") {
@@ -76,7 +75,7 @@ const server = http.createServer(   (req,res) => {
         });
 
 });
-const start = () => server.listen(port, () => serLogger.info(`listening on port ${port}`));
+const start = () => server.listen(port, () => serLogger.info(`Feedback server listening on port ${port}`));
 
 module.exports.createServer = http.createServer;
 module.exports.start = start;
