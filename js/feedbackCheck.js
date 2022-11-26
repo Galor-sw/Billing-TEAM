@@ -1,11 +1,7 @@
-const logger = require(`./logger.js`);
-let serLogger = logger.log;
-
 function changeRate(val) {
     let emojis = ['😠', '😦', '😑', '😀', '😍'];
     document.getElementById("emoji").textContent = emojis[val];
 }
-
 
 let mail='';
 let urlParams = new URLSearchParams(window.location.search);
@@ -23,31 +19,27 @@ $.post('http://localhost:8080/emailCheck', mail)
             changeRate(feedBack.rate);
             if(feedBack.answers.recommend == "yes")
                 $(".form-check-input").eq(0).prop("checked", true);
-            else
+            else if (feedBack.answers.recommend == "no")
                 $(".form-check-input").eq(1).prop("checked", true);
 
             if(feedBack.answers.choose_again == "yes")
                 $(".form-check-input").eq(2).prop("checked", true);
-            else
+            else if (feedBack.answers.choose_again == "no")
                 $(".form-check-input").eq(3).prop("checked", true);
 
             $('textarea[name="comment"]').val(feedBack.answers.improvement);
 
             if(feedBack.answers.customer_support == "yes")
                 $(".form-check-input").eq(4).prop("checked", true);
-            else
+            else if (feedBack.answers.customer_support == "no")
                 $(".form-check-input").eq(5).prop("checked", true);
 
             $('textarea[name="freeText"]').val(feedBack.free_text);
         }
-
-
-
     })
     .fail(function(xhr, status, error)
     {
-    serLogger.error("failed send to server"+ error);
-
+        console.error("failed send to server"+ error);
     });
 
 let json ={};
@@ -80,7 +72,5 @@ $("document").ready(() => {
                     else
                         alert("The feedback wasn't added");
                 });
-
-
         });
 });
