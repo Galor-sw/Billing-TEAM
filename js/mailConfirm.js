@@ -4,9 +4,10 @@ $("document").ready(() => {
 $('input[name="submit"]').click( function(e) {
     e.preventDefault();
     let mail= $('input[name="mail"]').val();
+    let jsonMail={"mail":mail};
     if(mail)
     {
-        $.post('http://localhost:8080/emailCheck', mail)
+        $.post('http://localhost:8080/emailCheck', jsonMail)
             .done(function(msg)
                 {
                     if(msg == "The email exists")

@@ -2,10 +2,13 @@
   "users": [
     {
       "email": "gildavidi75@gmail.com",
-      "free_text": "",
+      "free_text": "no",
       "rate": "4",
       "answers": {
-        "improvement": ""
+        "recommend": "yes",
+        "choose_again": "yes",
+        "improvement": "gal or the TL",
+        "customer_support": "no"
       }
     },
     {

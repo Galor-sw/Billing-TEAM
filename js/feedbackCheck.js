@@ -9,12 +9,11 @@ mail = urlParams.get('mail');
 let isHaveFeedBack = false;
 
 // Check if the user gave feedback already and set it to the form
-$.get('http://localhost:8080/users/?mail=' + mail)
+$.get('http://localhost:8080/users/' + mail)
     .done(function (msg) {
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
             let feedBack = JSON.parse(msg);
-            console.log(feedBack);
             $('input[name="emoji"]').val(feedBack.rate);
             changeRate(feedBack.rate);
             if (feedBack.answers.recommend == "yes")
@@ -54,8 +53,7 @@ $("document").ready(() => {
         json.answers.choose_again = $("input[type='radio'][name='q3']:checked").val();
         json.answers.improvement = $('textarea[name="comment"]').val();
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
-
-        $.post('http://localhost:8080/users/' + mail + '/feedback', JSON.stringify(json))
+        $.post('http://localhost:8080/users/' + mail + '/feedback', json)
             .done(function (msg) {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
@@ -63,7 +61,7 @@ $("document").ready(() => {
                         window.location.replace("http://localhost:8080/loginAndForm/message.html");
                     // Client clicked on "HELP" button
                     else {
-                        $.get('http://localhost:8080/contactSupport/?mail=' + mail)
+                        $.get('http://localhost:8080/contactSupport/' + mail)
                             .done(function (link) {
                                 window.location.replace(link);
                             })
