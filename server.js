@@ -10,6 +10,7 @@ let chatServerFlag = false;
 
 
 
+
 app.use(express.urlencoded({
     extended: true
 }))
@@ -26,6 +27,7 @@ app.use('/users', feedbackRouter);
 app.use('/', fileLoaderRouter);
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/js', express.static(__dirname + '/js'));
+app.use('/favicon.ico', express.static('./favicon.ico'));
 
 //create server
 const start = () =>{ app.listen(port, () => {
