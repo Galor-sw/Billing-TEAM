@@ -14,7 +14,6 @@ $.get('http://localhost:8080/users/' + mail)
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
             let feedBack = JSON.parse(msg);
-            console.log(feedBack);
             $('input[name="emoji"]').val(feedBack.rate);
             changeRate(feedBack.rate);
             if (feedBack.answers.recommend == "yes")
@@ -62,7 +61,7 @@ $("document").ready(() => {
                         window.location.replace("http://localhost:8080/loginAndForm/message.html");
                     // Client clicked on "HELP" button
                     else {
-                        $.get('http://localhost:8080/contactSupport/?mail=' + mail)
+                        $.get('http://localhost:8080/contactSupport/' + mail)
                             .done(function (link) {
                                 window.location.replace(link);
                             })

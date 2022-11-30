@@ -19,7 +19,6 @@ module.exports = {
      getFeedback : (req,res) => {
         let feedBack = json.isHaveFeedBack(req.params.mail);
         if (feedBack != '') {
-            console.log(JSON.stringify(feedBack));
             res.send(JSON.stringify(feedBack));
         } else {
             res.send("The user hasn't given a feedback yet");
