@@ -7,14 +7,13 @@ let serLogger = logger.log;
 module.exports = {
 //create
      createFeedback : (req,res) => {
-         console.log("createFeedback: "+req.body);
-        // let feedbackString = JSON.parse(req.body);
-        // if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
-        //     addRow(req.body).then(r => (serLogger.info('Row added to google sheet successfully')));
-        //     res.send("The feedback was added");
-        // } else {
-        //     res.send("The feedback wasn't added");
-        // }
+        let feedbackString = JSON.stringify(req.body);
+        if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
+            addRow(req.body).then(r => (serLogger.info('Row added to google sheet successfully')));
+            res.send("The feedback was added");
+        } else {
+            res.send("The feedback wasn't added");
+        }
     },
 //read
      getFeedback : (req,res) => {

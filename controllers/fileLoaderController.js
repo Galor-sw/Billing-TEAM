@@ -12,8 +12,10 @@ module.exports = {
     },
     loadFormFile: (req, res) => {
         res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+    },
+    loadMessageFile: (req, res) => {
+        res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
-
 }
 
 
