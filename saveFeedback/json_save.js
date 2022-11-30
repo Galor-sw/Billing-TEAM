@@ -14,8 +14,10 @@ const isExists = (email) => {
 const isHaveFeedBack = (email) => {
     for (let i in json.users) {
         if (email === json.users[i].email) {
-            if (json.users[i].hasOwnProperty('rate'))
+            if (json.users[i].hasOwnProperty('rate')) {
+                console.log("is have feedback:"+json.users[i]);
                 return json.users[i];
+            }
             else
                 return false;
         }
