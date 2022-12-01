@@ -28,7 +28,7 @@ io.on('connection', socket => {
         })
 
         socket.on('chatMessage', msg => {
-            io.emit('message', formatMessage('Avi', msg));
+            io.emit('message', formatMessage(username, msg));
         });
 
         socket.on('close', msg => {
