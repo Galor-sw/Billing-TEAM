@@ -3,13 +3,20 @@ function changeRate(val) {
     document.getElementById("emoji").textContent = emojis[val];
 }
 
+// let pathValidator;
+// process.env.STATUS === 'production'
+//     ? (pathValidator = process.env.PROD_PORT)
+//     : (pathValidator = process.env.DEV_PORT);
+//
+const pathValidator=`http://localhost:8080/`;
+
 let mail = '';
 let urlParams = new URLSearchParams(window.location.search);
 mail = urlParams.get('mail');
 let isHaveFeedBack = false;
 
 // Check if the user gave feedback already and set it to the form
-$.get(pathValidator + '/users/' + mail)
+$.get(pathValidator+'/users/' + mail)
     .done(function (msg) {
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
@@ -53,12 +60,12 @@ $("document").ready(() => {
         json.answers.choose_again = $("input[type='radio'][name='q3']:checked").val();
         json.answers.improvement = $('textarea[name="comment"]').val();
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
-        $.post('http://localhost:8080/users/' + mail + '/feedback', json)
+        $.post(pathValidator+'/users/' + mail + '/feedback', json)
             .done(function (msg) {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
                     if (e.target.value == "Send")
-                        window.location.replace(pathValidator + "/loginAndForm/message.html");
+                        window.location.replace(pathValidator+"/loginAndForm/message.html");
                     // Client clicked on "HELP" button
                     else {
                         $.get(pathValidator + '/contactSupport/' + mail)

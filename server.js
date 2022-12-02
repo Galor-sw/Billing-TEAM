@@ -1,18 +1,19 @@
 // const port = 8080; // AND FROM ENV FILE!!!!!!!!!!!!!!!
 // const fs = require('fs');
-require("dotenv").config({path: 'config/.env'});
 
+require("dotenv").config({path: 'config/.env'});
 const logger = require(`./logger.js`);
 const chatServer = require('./LiveChat/server');
 const express = require('express');
+const cors= require('cors');
 const app = express();
-app.use(express.json());
 let serLogger = logger.log;
 let chatServerFlag = false;
+app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }))
-
+app.use(cors());
 const { feedbackRouter } = require('./routers/feedbackRouter');
 const { fileLoaderRouter } = require('./routers/fileLoaderRouter');
 const { userRouter } = require('./routers/userRouter');

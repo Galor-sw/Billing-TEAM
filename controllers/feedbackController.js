@@ -3,12 +3,6 @@ const {addRow} = require("../googleSheets/googleSheets");
 const logger = require("../logger.js");
 const url = require("url");
 let serLogger = logger.log;
-require("dotenv").config({path: '../config/.env'});
-let pathValidator;
-process.env.STATUS === 'production'
-    ? (pathValidator = process.env.PROD_PORT)
-    : (pathValidator = process.env.DEV_PORT);
-
 
 module.exports = {
 //create

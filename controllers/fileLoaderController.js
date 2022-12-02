@@ -6,15 +6,16 @@ const app = require("express/lib/router");
 require("dotenv").config({path: '../config/.env'});
 let pathValidator;
 process.env.STATUS === 'production'
-    ? (pathValidator = process.env.PROD_PORT)
-    : (pathValidator = process.env.DEV_PORT);
+    ? (pathValidator = process.env.PROD_URL)
+    : (pathValidator = process.env.DEV_URL);
 
 
 module.exports = {
 
     loadLoginFile: (req, res) => {
+        console.log("heyyyyy");
         process.env.STATUS === 'production'
-            ? res.sendFile('../loginAndForm/log_in_form.html')
+            ? res.sendFile('/loginAndForm/log_in_form.html')
             : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
         // res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
 
