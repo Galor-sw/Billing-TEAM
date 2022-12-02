@@ -6,6 +6,7 @@ process.env.STATUS === 'production'
 
 
 exports.loadLoginFile=(req, res) => {
+    console.log("hello world");
     res.sendFile("https://billing-team-repo.onrender.com/loginAndForm/log_in_form.html");
 
 };
