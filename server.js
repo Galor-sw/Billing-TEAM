@@ -1,5 +1,7 @@
-const port = 8080; // AND FROM ENV FILE!!!!!!!!!!!!!!!
+// const port = 8080; // AND FROM ENV FILE!!!!!!!!!!!!!!!
 // const fs = require('fs');
+require("dotenv").config({path: 'config/.env'});
+
 const logger = require(`./logger.js`);
 const chatServer = require('./LiveChat/server');
 const express = require('express');
@@ -7,10 +9,6 @@ const app = express();
 app.use(express.json());
 let serLogger = logger.log;
 let chatServerFlag = false;
-
-
-
-
 app.use(express.urlencoded({
     extended: true
 }))
@@ -32,9 +30,11 @@ app.use('/js', express.static(__dirname + '/js'));
 app.use('/favicon.ico', express.static('./favicon.ico'));
 
 //create server
-const start = () =>{ app.listen(port, () => {
-    serLogger.info(`Example app listening on port ${port}`)
-}) }
+const start = () => {
+    app.listen(process.env.PORT, () => {
+        serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
+    })
+}
 
 //
 //

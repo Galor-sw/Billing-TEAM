@@ -3,14 +3,20 @@ const {addRow} = require("../googleSheets/googleSheets");
 const logger = require("../logger.js");
 const url = require("url");
 let serLogger = logger.log;
+require("dotenv").config({path: '../config/.env'});
+let pathValidator;
+process.env.STATUS === 'production'
+    ? (pathValidator = process.env.PROD_PORT)
+    : (pathValidator = process.env.DEV_PORT);
+
 
 module.exports = {
 //create
-     createFeedback : (req,res) => {
+    createFeedback: (req, res) => {
         let feedbackString = JSON.stringify(req.body);
         if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
             addRow(req.body).then(r => (serLogger.info('Row added to google sheet successfully')));
-            res.send("The feedback was added");
+            res.send(pathValidator);
         } else {
             res.send("The feedback wasn't added");
         }
