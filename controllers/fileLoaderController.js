@@ -1,9 +1,3 @@
-// const fs = require('fs');
-const path = require("path");
-// const url = require("url");
-// const express = re/quire("express");
-// const app = require("express/lib/router");
-
 require("dotenv").config();
 let pathValidator;
 process.env.STATUS === 'production'
@@ -16,10 +10,10 @@ const loadLoginFile=(req, res) => {
 
 };
 const loadFormFile= (req, res) => {
-    res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+    res.sendFile('https://billing-team-repo.onrender.com/loginAndForm/form.html');
 };
 const loadMessageFile= (req, res) => {
-    res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+    res.sendFile('https://billing-team-repo.onrender.com/loginAndForm/message.html');
 };
 
 module.exports = {loadFormFile,loadLoginFile,loadMessageFile};
