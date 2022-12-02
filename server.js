@@ -14,10 +14,10 @@ app.use(express.urlencoded({
     extended: true
 }))
 app.use(cors());
-const { feedbackRouter } = require('./routers/feedbackRouter');
-const { fileLoaderRouter } = require('./routers/fileLoaderRouter');
-const { userRouter } = require('./routers/userRouter');
-const { chatRouter } = require('./routers/chatRouter');
+const feedbackRouter = require('./routers/feedbackRouter');
+const fileLoaderRouter = require('./routers/fileLoaderRouter');
+const userRouter = require('./routers/userRouter');
+const chatRouter = require('./routers/chatRouter');
 
 //user
 app.use('/emailCheck', userRouter);
@@ -33,7 +33,7 @@ app.use('/favicon.ico', express.static('./favicon.ico'));
 
 //create server
 const start = () => {
-    app.listen(process.env.PORT, () => {
+    app.listen(process.env.PORT|| 3000 ,()=> {
         serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
     })
 }
@@ -96,5 +96,5 @@ const start = () => {
 // });
 //
 // const start = () => server.listen(port, () => serLogger.info(`Feedback server listening on port ${port}`));
-
+// module.exports = server;
 module.exports.start = start;
