@@ -16,24 +16,24 @@ module.exports = {
         console.log("heyyyyy");
         // process.env.STATUS === 'production'
         //     ?
-            res.sendFile('/loginAndForm/log_in_form.html')
-            // : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
-        // res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
+        //     res.sendFile('/loginAndForm/log_in_form.html')
+        //     : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
+        res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
 
     },
     loadFormFile: (req, res) => {
         // process.env.STATUS === 'production'
         //     ?
-            res.sendFile('/loginAndForm/form.html')
-            // : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
-        // res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        //     res.sendFile('/loginAndForm/form.html')
+        //     : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
     },
     loadMessageFile: (req, res) => {
         // process.env.STATUS === 'production'
         //     ?
-            res.sendFile('/loginAndForm/message.html')
+        //     res.sendFile('/loginAndForm/message.html')
             // : res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
-        // res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+        res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
 }
 
