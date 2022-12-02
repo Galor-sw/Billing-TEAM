@@ -6,5 +6,3 @@ const chatRouter = express.Router();
 chatRouter.get('/:mail',chatController.startChat);
 
 module.exports = chatRouter;
-
-

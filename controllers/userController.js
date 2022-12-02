@@ -6,4 +6,3 @@ exports.emailCheck= (req,res) => {
         res.send("The email exists");
     }
 };
-// module.exports = {emailCheck};

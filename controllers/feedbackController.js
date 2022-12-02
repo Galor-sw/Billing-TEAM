@@ -8,7 +8,7 @@ let serLogger = logger.log;
 exports.createFeedback= (req, res) => {
     let feedbackString = JSON.stringify(req.body);
     if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
-        addRow(req.body).then(r => (serLogger.info('Row added to google sheet successfully')));
+        addRow(req.body).then(() => (serLogger.info('Row added to google sheet successfully')));
         res.send(pathValidator);
     } else {
         res.send("The feedback wasn't added");
@@ -23,10 +23,3 @@ exports.getFeedback= (req,res) => {
         res.send("The user hasn't given a feedback yet");
     }
 }
-
-
-// module.exports = {createFeedback,getFeedback}
-
-
-
-

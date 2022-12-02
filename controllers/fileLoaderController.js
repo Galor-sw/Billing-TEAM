@@ -15,8 +15,3 @@ exports.loadFormFile= (req, res) => {
 exports.loadMessageFile= (req, res) => {
     res.sendFile("https://billing-team-repo.onrender.com/loginAndForm/message.html");
 };
-
-// module.exports = {loadFormFile,loadLoginFile,loadMessageFile};
-
-
-

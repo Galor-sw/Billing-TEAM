@@ -13,9 +13,3 @@ exports.startChat= (req,res) => {
     console.log(name);
     res.send("http://localhost:3000?username=" + name);
 };
-
-// module.exports = {startChat};
-
-
-
-
