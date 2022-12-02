@@ -2,7 +2,7 @@ const chatServer = require('../LiveChat/server');
 // const url = require("url");
 let chatServerFlag = false;
 
-const startChat= (req,res) => {
+exports.startChat= (req,res) => {
     console.log("hgh");
     if (chatServerFlag == false) {
         chatServer.turnOnServerChat();
@@ -14,7 +14,7 @@ const startChat= (req,res) => {
     res.send("http://localhost:3000?username=" + name);
 };
 
-module.exports = {startChat};
+// module.exports = {startChat};
 
 
 

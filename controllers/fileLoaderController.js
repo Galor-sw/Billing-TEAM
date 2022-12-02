@@ -5,18 +5,18 @@ process.env.STATUS === 'production'
     : (pathValidator = process.env.DEV_URL);
 
 
-const loadLoginFile=(req, res) => {
+exports.loadLoginFile=(req, res) => {
     res.sendFile("https://billing-team-repo.onrender.com/loginAndForm/log_in_form.html");
 
 };
-const loadFormFile= (req, res) => {
+exports.loadFormFile= (req, res) => {
     res.sendFile("https://billing-team-repo.onrender.com/loginAndForm/form.html");
 };
-const loadMessageFile= (req, res) => {
+exports.loadMessageFile= (req, res) => {
     res.sendFile("https://billing-team-repo.onrender.com/loginAndForm/message.html");
 };
 
-module.exports = {loadFormFile,loadLoginFile,loadMessageFile};
+// module.exports = {loadFormFile,loadLoginFile,loadMessageFile};
 
 
 

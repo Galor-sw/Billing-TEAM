@@ -5,7 +5,7 @@ const logger = require("../logger.js");
 let serLogger = logger.log;
 
 //create
-const createFeedback= (req, res) => {
+exports.createFeedback= (req, res) => {
     let feedbackString = JSON.stringify(req.body);
     if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
         addRow(req.body).then(r => (serLogger.info('Row added to google sheet successfully')));
@@ -15,7 +15,7 @@ const createFeedback= (req, res) => {
     }
 };
 //read
-const getFeedback= (req,res) => {
+exports.getFeedback= (req,res) => {
     let feedBack = json.isHaveFeedBack(req.params.mail);
     if (feedBack != '') {
         res.send(JSON.stringify(feedBack));
@@ -25,7 +25,7 @@ const getFeedback= (req,res) => {
 }
 
 
-module.exports = {createFeedback,getFeedback}
+// module.exports = {createFeedback,getFeedback}
 
 
 
