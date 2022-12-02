@@ -14,7 +14,7 @@ module.exports = {
 
     loadLoginFile: (req, res) => {
         // console.log("heyyyyy");
-        res.sendFile(path.join('https://billing-team-repo.onrender.com/Billing-TEAM/loginAndForm/log_in_form.html'));
+        res.sendFile(__dirname +'https://billing-team-repo.onrender.com/Billing-TEAM/loginAndForm/log_in_form.html'));
 
     },
     loadFormFile: (req, res) => {
