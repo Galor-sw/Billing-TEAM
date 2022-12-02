@@ -1,42 +1,24 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
-const url = require('url');
+const http = require('http');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const logger = require(`../logger.js`);
-
-let serLogger = logger.log;
 const PORT = process.env.PORT || 3000;
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+const serLogger = logger.log;
+
 const admin = 'Chat Admin';
 
-// Create server
-const server = http.createServer((req,res) => {
-   let pathname = url.parse(req.url).pathname;
-   let ext = path.extname(pathname);
-   if (ext){
-      if (ext === '.css'){
-         res.writeHead(200, {'Content-Type': 'text/css'});
-      }
-      else if(ext === '.js'){
-         res.writeHead(200, {'Content-Type': 'text/javascript'});
-      }
-      let file = fs.createReadStream(__dirname + pathname);
-      file.pipe(res);
-   }
-   else{
-      serLogger.info("New connection to support live chat established");
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      let file = fs.createReadStream('./LiveChat/Frontend/index.html')
-      file.pipe(res);
-   }
-});
+// Set static folder
+app.use(express.static(path.join(__dirname, 'Frontend')))
 
-// create socket.io to server
-const io = socketio(server);
-
-// Runs when client connects to our sever
+// Runs when client connect to our sever
 io.on('connection', socket => {
+    serLogger.info("New connection to support live chat established");
     socket.on("joinChat", ({username}) => {
 
         socket.emit('message', formatMessage(admin, `Hey ${username}, welcome to support chat`));
@@ -55,10 +37,10 @@ io.on('connection', socket => {
     });
 });
 
+
 const turnOnServerChat = () => {
-   //init listener
-   server.listen(PORT, () => serLogger.info(`Live chat server running on ${PORT}`));
+    //init listener
+    server.listen(PORT, () => serLogger.info(`Live chat server running on ${PORT}`));
 }
 
 module.exports = {turnOnServerChat};
-
