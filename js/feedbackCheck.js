@@ -3,12 +3,6 @@ function changeRate(val) {
     document.getElementById("emoji").textContent = emojis[val];
 }
 
-// let pathValidator;
-// process.env.STATUS === 'production'
-//     ? (pathValidator = process.env.PROD_PORT)
-//     : (pathValidator = process.env.DEV_PORT);
-//
-const pathValidator=`http://localhost:8080/`;
 
 let mail = '';
 let urlParams = new URLSearchParams(window.location.search);
@@ -60,7 +54,7 @@ $("document").ready(() => {
         json.answers.choose_again = $("input[type='radio'][name='q3']:checked").val();
         json.answers.improvement = $('textarea[name="comment"]').val();
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
-        $.post(pathValidator+'/users/' + mail + '/feedback', json)
+        $.post(`${window.location.origin}/users/${mail}/feedback`, json)
             .done(function (msg) {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
