@@ -21,10 +21,16 @@ module.exports = {
 
     },
     loadFormFile: (req, res) => {
-        res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        process.env.STATUS === 'production'
+            ? res.sendFile('/loginAndForm/form.html')
+            : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        // res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
     },
     loadMessageFile: (req, res) => {
-        res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+        process.env.STATUS === 'production'
+            ? res.sendFile('/loginAndForm/message.htmll')
+            : res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+        // res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
 }
 
