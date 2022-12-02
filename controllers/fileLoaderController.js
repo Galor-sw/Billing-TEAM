@@ -12,7 +12,7 @@ process.env.STATUS === 'production'
 
 
 const loadLoginFile=(req, res) => {
-    res.sendFile(__dirname + 'https://billing-team-repo.onrender.com/Billing-TEAM/loginAndForm/log_in_form.html');
+    res.sendFile('https://billing-team-repo.onrender.com/loginAndForm/log_in_form.html');
 
 };
 const loadFormFile= (req, res) => {
