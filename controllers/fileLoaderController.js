@@ -15,20 +15,20 @@ module.exports = {
     loadLoginFile: (req, res) => {
         console.log("heyyyyy");
         process.env.STATUS === 'production'
-            ? res.sendFile('log_in_form.html', { root: pathValidator})
+            ? res.sendFile('/loginAndForm/log_in_form.html', { root: pathValidator})
             : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
         // res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
 
     },
     loadFormFile: (req, res) => {
         process.env.STATUS === 'production'
-            ? res.sendFile('form.html', { root: pathValidator})
+            ? res.sendFile('/loginAndForm/form.html', { root: pathValidator})
             : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
         // res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
     },
     loadMessageFile: (req, res) => {
         process.env.STATUS === 'production'
-            ? res.sendFile('message.html', { root: pathValidator})
+            ? res.sendFile('/loginAndForm/message.html', { root: pathValidator})
             : res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
         // res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
