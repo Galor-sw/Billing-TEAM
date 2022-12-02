@@ -14,23 +14,23 @@ module.exports = {
 
     loadLoginFile: (req, res) => {
         console.log("heyyyyy");
-        // process.env.STATUS === 'production'
-            // ? res.sendFile(pathValidator +'/loginAndForm/log_in_form.html')
-            // : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
-        res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
+        process.env.STATUS === 'production'
+            ? res.sendFile('log_in_form.html', { root: pathValidator})
+            : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
+        // res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
 
     },
     loadFormFile: (req, res) => {
-        // process.env.STATUS === 'production'
-        //     ? res.sendFile(pathValidator+'/loginAndForm/form.html')
-        //     : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
-        res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        process.env.STATUS === 'production'
+            ? res.sendFile('form.html', { root: pathValidator})
+            : res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
+        // res.sendFile(path.join(__dirname, '../loginAndForm/form.html'));
     },
     loadMessageFile: (req, res) => {
-        // process.env.STATUS === 'production'
-        //     ? res.sendFile(pathValidator+'/loginAndForm/message.htmll')
-        //     : res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
-        res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+        process.env.STATUS === 'production'
+            ? res.sendFile('message.html', { root: pathValidator})
+            : res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
+        // res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
 }
 
