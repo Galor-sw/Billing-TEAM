@@ -16,7 +16,7 @@ module.exports = {
         // console.log(path.join(__dirname, pathValidator , '/loginAndForm/log_in_form.html'));
         // console.log((path.join(__dirname, '../loginAndForm/log_in_form.html')));
         process.env.STATUS === 'production'
-            ? res.sendFile(path.join(pathValidator, '/loginAndForm/log_in_form.html'))
+            ? res.sendFile(pathValidator + '/loginAndForm/log_in_form.html')
             : res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
         // res.sendFile(path.join(__dirname, '../loginAndForm/log_in_form.html'));
 
