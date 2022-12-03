@@ -37,4 +37,4 @@ app.listen(process.env.PORT || 3000, () => {
     serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
 });
 
-chatServer.turnOnServerChat();
+//chatServer.turnOnServerChat();
