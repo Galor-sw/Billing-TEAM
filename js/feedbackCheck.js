@@ -10,8 +10,8 @@ mail = urlParams.get('mail');
 let isHaveFeedBack = false;
 
 // Check if the user gave feedback already and set it to the form
-$.get(pathValidator+'/users/' + mail)
-    .done(function (msg) {
+$.get(`${window.location.origin}/users/${mail}`)
+    .done((msg) => {
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
             let feedBack = JSON.parse(msg);
@@ -56,13 +56,14 @@ $("document").ready(() => {
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
             .done(function (msg) {
+                console.log('&&&&&&&&&&&');
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
                     if (e.target.value == "Send")
-                        window.location.replace(pathValidator+"/loginAndForm/message.html");
+                        window.location.replace("/loginAndForm/message.html");
                     // Client clicked on "HELP" button
                     else {
-                        $.get(pathValidator + '/contactSupport/' + mail)
+                        $.get(`${window.location.origin}/contactSupport/${mail}`)
                             .done(function (link) {
                                 window.location.replace(link);
                             })
