@@ -52,7 +52,7 @@ chatForm.addEventListener('submit', (e) => {
 });
 
 // Output message to DOM
-function outputMessage(message) {
+const outputMessage = (message) => {
     const div = document.createElement('div');
     div.classList.add('message');
     div.innerHTML = `<h4>${message.username}, ${message.time}</h4>
@@ -61,13 +61,13 @@ function outputMessage(message) {
 }
 
 // Hide 'typing..'
-function typingTimeout() {
+const typingTimeout = () => {
     typing = false;
     socket.emit('typing', {user: username, typing: false});
 }
 
 // Show 'typing..'
-$(document).ready(function () {
+$(document).ready(() => {
     $('#msg').keypress((e) => {
         // if Not CR
         if (e.which != 13) {

@@ -1,5 +1,5 @@
 const json = require("../saveFeedback/json_save");
-const {addRow} = require("../googleSheets/googleSheets");
+const {addRow, deleteRow} = require("../googleSheets/googleSheets");
 const logger = require("../logger.js");
 // const url = require("url");
 let serLogger = logger.log;
@@ -21,5 +21,14 @@ exports.getFeedback = (req, res) => {
         res.send(JSON.stringify(feedBack));
     } else {
         res.send("The user hasn't given a feedback yet");
+    }
+}
+exports.deleteFeedback = async (req, res) => {
+    const result = await deleteRow(req.params.mail);
+    if (result === 'success') {
+        serLogger.info('Row deleted from google sheet successfully');
+        res.send("The feedback was deleted");
+    } else {
+        res.send("The feedback wasn't deleted");
     }
 }
