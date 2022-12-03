@@ -13,7 +13,6 @@ $("document").ready(() => {
                     } else {
                         document.getElementById("failmsg").innerHTML = msg;
                     }
-
                 })
                 .fail(function (xhr, status, error) {
                     console.log("failed send to server" + error);

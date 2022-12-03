@@ -12,3 +12,5 @@
 .env
 credentials.json
 
+logs.txt
+
