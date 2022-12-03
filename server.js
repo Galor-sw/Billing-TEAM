@@ -1,41 +1,6 @@
 // const port = 8080; // AND FROM ENV FILE!!!!!!!!!!!!!!!
 // const fs = require('fs');
-require("dotenv").config({path: 'config/.env'});
 
-const logger = require(`./logger.js`);
-const chatServer = require('./LiveChat/server');
-const express = require('express');
-const app = express();
-app.use(express.json());
-let serLogger = logger.log;
-let chatServerFlag = false;
-app.use(express.urlencoded({
-    extended: true
-}))
-
-const { feedbackRouter } = require('./routers/feedbackRouter');
-const { fileLoaderRouter } = require('./routers/fileLoaderRouter');
-const { userRouter } = require('./routers/userRouter');
-const { chatRouter } = require('./routers/chatRouter');
-
-//user
-app.use('/emailCheck', userRouter);
-//feedback
-app.use('/users', feedbackRouter);
-//chat support
-app.use('/contactSupport', chatRouter);
-//load files
-app.use('/', fileLoaderRouter);
-app.use('/css', express.static(__dirname + '/css'));
-app.use('/js', express.static(__dirname + '/js'));
-app.use('/favicon.ico', express.static('./favicon.ico'));
-
-//create server
-const start = () => {
-    app.listen(process.env.PORT, () => {
-        serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
-    })
-}
 
 //
 //
@@ -95,5 +60,5 @@ const start = () => {
 // });
 //
 // const start = () => server.listen(port, () => serLogger.info(`Feedback server listening on port ${port}`));
-
-module.exports.start = start;
+// module.exports = server;
+// module.exports.start = start

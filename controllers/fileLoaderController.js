@@ -1,6 +1,5 @@
+require("dotenv").config();
 const path = require("path");
-require("dotenv").config({path: '../config/.env'});
-
 
 module.exports = {
 
@@ -14,6 +13,3 @@ module.exports = {
         res.sendFile(path.join(__dirname, '../loginAndForm/message.html'));
     }
 }
-
-
-

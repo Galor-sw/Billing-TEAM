@@ -3,13 +3,14 @@ function changeRate(val) {
     document.getElementById("emoji").textContent = emojis[val];
 }
 
+
 let mail = '';
 let urlParams = new URLSearchParams(window.location.search);
 mail = urlParams.get('mail');
 let isHaveFeedBack = false;
 
 // Check if the user gave feedback already and set it to the form
-$.get(pathValidator + '/users/' + mail)
+$.get(pathValidator+'/users/' + mail)
     .done(function (msg) {
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
@@ -58,7 +59,7 @@ $("document").ready(() => {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
                     if (e.target.value == "Send")
-                        window.location.replace(pathValidator + "/loginAndForm/message.html");
+                        window.location.replace(pathValidator+"/loginAndForm/message.html");
                     // Client clicked on "HELP" button
                     else {
                         $.get(pathValidator + '/contactSupport/' + mail)
