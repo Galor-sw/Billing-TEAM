@@ -4,7 +4,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const logger = require(`../logger.js`);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.chatPort || 3001;
 
 const app = express();
 const server = http.createServer(app);
