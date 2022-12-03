@@ -1,6 +1,6 @@
 const chatServer = require('../LiveChat/server');
 // const url = require("url");
-let chatServerFlag = false;
+let chatServerFlag = true;
 
 exports.startChat = (req, res) => {
     if (chatServerFlag == false) {
