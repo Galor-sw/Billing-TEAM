@@ -1,8 +1,7 @@
-function changeRate(val) {
+const changeRate = (val) => {
     let emojis = ['😠', '😦', '😑', '😀', '😍'];
     document.getElementById("emoji").textContent = emojis[val];
 }
-
 
 let mail = '';
 let urlParams = new URLSearchParams(window.location.search);
@@ -37,14 +36,14 @@ $.get(`${window.location.origin}/users/${mail}`)
             $('textarea[name="freeText"]').val(feedBack.free_text);
         }
     })
-    .fail(function (xhr, status, error) {
+    .fail((xhr, status, error) => {
         console.error("failed send to server" + error);
     });
 
 let json = {};
 $("document").ready(() => {
     // Send the feedback to the server to save
-    $('input[name="submit"]').click(function (e) {
+    $('input[name="submit"]').click((e) => {
         e.preventDefault();
         json.email = mail;
         json.free_text = $('textarea[name="freeText"]').val();
@@ -55,24 +54,36 @@ $("document").ready(() => {
         json.answers.improvement = $('textarea[name="comment"]').val();
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
-            .done(function (msg) {
-                console.log('&&&&&&&&&&&');
+            .done((msg) => {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
                     if (e.target.value == "Send")
-                        window.location.replace("/loginAndForm/message.html");
+                        window.location.replace(`/loginAndForm/message.html?message=${msg}`);
                     // Client clicked on "HELP" button
-                    else {
+                    else if (e.target.value == "Help") {
                         $.get(`${window.location.origin}/contactSupport/${mail}`)
-                            .done(function (link) {
+                            .done((link) => {
                                 window.location.replace(link);
                             })
-                            .fail(function (xhr, status, error) {
+                            .fail((xhr, status, error) => {
                                 console.error("failed to ask link for chat" + error);
                             });
                     }
                 } else
                     alert("The feedback wasn't added");
             });
+    });
+    $('input[name="delete"]').click((e) => {
+        e.preventDefault();
+        json.email = mail;
+        $.ajax({
+            url: `${window.location.origin}/users/${mail}/feedback`,
+            type: 'DELETE',
+            data: json,
+            success: (result) => {
+                window.location.replace(`/loginAndForm/message.html?message=${result}`);
+            }
+        });
+
     });
 });

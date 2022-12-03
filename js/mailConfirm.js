@@ -1,7 +1,7 @@
 // Input email confirmation
 
 $("document").ready(() => {
-    $('input[name="submit"]').click(function (e) {
+    $('input[name="submit"]').click((e) => {
         e.preventDefault();
         let mail = $('input[name="mail"]').val();
         let jsonMail = {"mail": mail};
@@ -14,7 +14,7 @@ $("document").ready(() => {
                         document.getElementById("failmsg").innerHTML = msg;
                     }
                 })
-                .fail(function (xhr, status, error) {
+                .fail((xhr, status, error) => {
                     console.log("failed send to server" + error);
 
                 })
