@@ -8,7 +8,7 @@
 /dataSources.local.xml
 
 # ignore environment file
-/config/.env
+../config
 .env
 credentials.json
 
