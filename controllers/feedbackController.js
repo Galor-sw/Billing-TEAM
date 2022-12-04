@@ -1,7 +1,6 @@
 const json = require("../saveFeedback/json_save");
 const {addRow, deleteRow} = require("../googleSheets/googleSheets");
 const logger = require("../logger.js");
-// const url = require("url");
 let serLogger = logger.log;
 
 //create
