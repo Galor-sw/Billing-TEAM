@@ -1,10 +1,7 @@
-const { Router } = require('express');
-const chatController= require("../controllers/chatController");
-const chatRouter = new Router();
-
+const express = require('express');
+const chatController = require("../controllers/chatController");
+const chatRouter = express.Router();
 
 chatRouter.get('/:mail', chatController.startChat);
 
-module.exports = {chatRouter};
-
-
+module.exports = chatRouter;

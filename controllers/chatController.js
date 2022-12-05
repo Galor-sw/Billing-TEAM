@@ -1,27 +1,6 @@
-const chatServer = require('../LiveChat/server');
-const url = require("url");
-let chatServerFlag = false;
+const CHAT_URL = process.env.PROD_CHAT_URL;
 
-
-module.exports = {
-
-    startChat : (req,res) => {
-        console.log("hgh");
-            if (chatServerFlag == false) {
-                chatServer.turnOnServerChat();
-                chatServerFlag = true;
-            }
-            let mail = req.params.mail;
-            let name = mail.split('@')[0];
-            console.log(name);
-            res.send("http://localhost:3000?username=" + name);
-
-
-    }
-
-
-}
-
-
-
-
+exports.startChat = (req, res) => {
+    let name = req.params.mail.split('@')[0];
+    res.send(`${CHAT_URL}?username=${name}`);
+};

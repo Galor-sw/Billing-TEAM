@@ -10,7 +10,7 @@ let rowAddFormat = {
     customer_support: ""
 };
 
-function rowToSheetFormat(row) {
+const rowToSheetFormat = (row) => {
     rowAddFormat.email = row.email;
     rowAddFormat.free_text = row.free_text;
     rowAddFormat.rate = row.rate;
@@ -18,7 +18,7 @@ function rowToSheetFormat(row) {
     rowAddFormat.choose_again = row.answers.choose_again;
     rowAddFormat.improvement = row.answers.improvement;
     rowAddFormat.customer_support = row.answers.customer_support;
-};
+}
 
 
 const RESPONSES_SHEET_ID = '1Ktk1cyaazh-jz1KpSgM03_Ldi8ta9Qlq774YVKsjL6M';
@@ -49,7 +49,6 @@ const getRow = async (anyParam) => {
 
     for (let index = 0; index < rows.length; index++) {
         const row = rows[index];
-        console.log(row[anyParam]);
     }
 };
 
@@ -74,8 +73,27 @@ const addRow = async (row) => {
         }
     }
     await sheet.addRow(rowAddFormat);
-
 };
 
+const deleteRow = async (mail) => {
+    await doc.useServiceAccountAuth({
+        client_email: CREDENTIALS.client_email,
+        private_key: CREDENTIALS.private_key
+    });
 
-module.exports = {getRow, addRow};
+    await doc.loadInfo();
+    let sheet = doc.sheetsByIndex[0];
+
+    let rows = await sheet.getRows();
+
+    for (let index = 0; index < rows.length; index++) {
+        const rowIndex = rows[index];
+        if (mail === rowIndex.email) {
+            await rows[index].delete();
+            return 'success';
+        }
+    }
+    return 'failed';
+}
+
+module.exports = {getRow, addRow, deleteRow};

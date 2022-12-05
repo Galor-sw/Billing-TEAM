@@ -1,4 +1,4 @@
-function changeRate(val) {
+const changeRate = (val) => {
     let emojis = ['😠', '😦', '😑', '😀', '😍'];
     document.getElementById("emoji").textContent = emojis[val];
 }
@@ -9,8 +9,8 @@ mail = urlParams.get('mail');
 let isHaveFeedBack = false;
 
 // Check if the user gave feedback already and set it to the form
-$.get(pathValidator + '/users/' + mail)
-    .done(function (msg) {
+$.get(`${window.location.origin}/users/${mail}`)
+    .done((msg) => {
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
             let feedBack = JSON.parse(msg);
@@ -36,14 +36,14 @@ $.get(pathValidator + '/users/' + mail)
             $('textarea[name="freeText"]').val(feedBack.free_text);
         }
     })
-    .fail(function (xhr, status, error) {
+    .fail((xhr, status, error) => {
         console.error("failed send to server" + error);
     });
 
 let json = {};
 $("document").ready(() => {
     // Send the feedback to the server to save
-    $('input[name="submit"]').click(function (e) {
+    $('input[name="submit"]').click((e) => {
         e.preventDefault();
         json.email = mail;
         json.free_text = $('textarea[name="freeText"]').val();
@@ -54,23 +54,36 @@ $("document").ready(() => {
         json.answers.improvement = $('textarea[name="comment"]').val();
         json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
-            .done(function (msg) {
+            .done((msg) => {
                 if (msg == "The feedback was added") {
                     // Client clicked on "SEND" button
                     if (e.target.value == "Send")
-                        window.location.replace(pathValidator + "/loginAndForm/message.html");
+                        window.location.replace(`/loginAndForm/message.html?message=${msg}`);
                     // Client clicked on "HELP" button
-                    else {
-                        $.get(pathValidator + '/contactSupport/' + mail)
-                            .done(function (link) {
+                    else if (e.target.value == "Help") {
+                        $.get(`${window.location.origin}/contactSupport/${mail}`)
+                            .done((link) => {
                                 window.location.replace(link);
                             })
-                            .fail(function (xhr, status, error) {
+                            .fail((xhr, status, error) => {
                                 console.error("failed to ask link for chat" + error);
                             });
                     }
                 } else
                     alert("The feedback wasn't added");
             });
+    });
+    $('input[name="delete"]').click((e) => {
+        e.preventDefault();
+        json.email = mail;
+        $.ajax({
+            url: `${window.location.origin}/users/${mail}/feedback`,
+            type: 'DELETE',
+            data: json,
+            success: (result) => {
+                window.location.replace(`/loginAndForm/message.html?message=${result}`);
+            }
+        });
+
     });
 });
