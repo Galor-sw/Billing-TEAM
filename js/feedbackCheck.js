@@ -26,14 +26,14 @@ $.get(`${window.location.origin}/users/${mail}`)
             else if (feedBack.answers.choose_again == "no")
                 $(".form-check-input").eq(3).prop("checked", true);
 
-            $('textarea[name="comment"]').val(feedBack.answers.improvement);
+            $('textarea[name="improvement"]').val(feedBack.answers.improvement);
 
             if (feedBack.answers.customer_support == "yes")
                 $(".form-check-input").eq(4).prop("checked", true);
             else if (feedBack.answers.customer_support == "no")
                 $(".form-check-input").eq(5).prop("checked", true);
 
-            $('textarea[name="freeText"]').val(feedBack.free_text);
+            $('textarea[name="free_text"]').val(feedBack.free_text);
         }
     })
     .fail((xhr, status, error) => {
@@ -46,13 +46,13 @@ $("document").ready(() => {
     $('input[name="submit"]').click((e) => {
         e.preventDefault();
         json.email = mail;
-        json.free_text = $('textarea[name="freeText"]').val();
+        json.free_text = $('textarea[name="free_text"]').val();
         json.rate = $('input[name="emoji"]').val();
         json.answers = {};
-        json.answers.recommend = $("input[type='radio'][name='q2']:checked").val();
-        json.answers.choose_again = $("input[type='radio'][name='q3']:checked").val();
-        json.answers.improvement = $('textarea[name="comment"]').val();
-        json.answers.customer_support = $("input[type='radio'][name='q5']:checked").val();
+        json.answers.recommend = $("input[type='radio'][name='recommend']:checked").val();
+        json.answers.choose_again = $("input[type='radio'][name='choose_again']:checked").val();
+        json.answers.improvement = $('textarea[name="improvement"]').val();
+        json.answers.customer_support = $("input[type='radio'][name='customer_support']:checked").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
             .done((msg) => {
                 if (msg == "The feedback was added") {

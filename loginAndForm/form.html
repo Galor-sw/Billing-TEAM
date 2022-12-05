@@ -35,13 +35,13 @@
                         <label>Will you recommend our service?</label>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" value="yes">
+                            <input class="form-check-input" type="radio" name="recommend" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" value="no">
+                            <input class="form-check-input" type="radio" name="recommend" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -54,13 +54,13 @@
 
                         <label>Will you choose our service again in the future?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" value="yes">
+                            <input class="form-check-input" type="radio" name="choose_again" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" value="no">
+                            <input class="form-check-input" type="radio" name="choose_again" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -69,7 +69,7 @@
                     <div class="question">
                         <label>What can we improve on our service?</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" cols="30"
-                                  name="comment"
+                                  name="improvement"
                                   placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
@@ -77,13 +77,14 @@
                     <div class="question">
                         <label>Do you want customer support to contact you back?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="flexRadioDefault1" value="yes">
+                            <input class="form-check-input" type="radio" name="customer_support" id="flexRadioDefault1"
+                                   value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" value="no">
+                            <input class="form-check-input" type="radio" name="customer_support" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -92,7 +93,7 @@
                     <div class="question">
                         <label>Free text</label>
                         <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" cols="30"
-                                  name="freeText"
+                                  name="free_text"
                                   placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
@@ -100,20 +101,21 @@
                     <div class="question_small">
                         <label>How old are you?</label>
                         <div id="smaller_box">
-                        <input pattern="[1-9][8-9]|[2-9][0-9]" class="form-control" name="age" type="number">
+                            <input pattern="[1-9][8-9]|[2-9][0-9]" class="form-control" name="age" type="number">
 
                         </div>
                     </div>
                     <div class="question">
                         <label>What is your gender?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" id="flexRadioDefault2" value="Female">
+                            <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2"
+                                   value="Female">
                             <label class="form-check-label">
                                 Female
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" value="Male">
+                            <input class="form-check-input" type="radio" name="gender" value="Male">
                             <label class="form-check-label">
                                 Male
                             </label>
@@ -121,18 +123,19 @@
                     </div>
                     <div class="question">
                         <label>Occupation?</label>
-                        <input type="text" class="form-control" name="occupation" placeholder="Enter your occupation" required="">
+                        <input type="text" class="form-control" name="occupation" placeholder="Enter your occupation"
+                               required="">
                     </div>
                 </div>
             </div>
             <p>*Click on HELP to send the feedback and start a live chat with our support</p>
             <div class="buttons">
                 <div class="button_style">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <input class="button" type="submit" value="Send" name="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <input class="button" type="submit" value="Send" name="submit">
                 </div>
                 <div class="button_style">
                     <span></span>
