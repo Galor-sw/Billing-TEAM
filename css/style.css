@@ -14,6 +14,7 @@ body {
     top: 50%;
     left: 50%;
     min-width: 400px;
+    max-width: 1200px;
     padding: 40px;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, .5);
@@ -55,7 +56,6 @@ body {
 }
 
 .login-box .user-box2 input {
-    color: #fff;
     outline: none;
     border-bottom: none;
 }
@@ -87,17 +87,13 @@ body {
     color: #03e9f4;
     font-size: 12px;
 }
-
 #failmsg{
-    /*margin-top: 10px;*/
     color:red;
     margin-bottom: 10px;
 }
-
-
-.button {
+.button,#button_delete, #button_help {
     padding: 10px 20px;
-    color: #03e9f4;
+    color: limegreen;
     background: rgba(0, 0, 0, 0);
     border: rgba(0, 0, 0, 0);
     font-size: 16px;
@@ -106,9 +102,6 @@ body {
     transition: .5s;
     letter-spacing: 4px;
     border-radius: 5px;
-    /*opacity: 0.5;*/
-    /*position: absolute;*/
-    /*left: 45%;*/
 }
 
 .button_style {
@@ -119,27 +112,18 @@ body {
 }
 
 .button:hover {
-    background: #03e9f4;
+    background: limegreen;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-    0 0 25px #03e9f4,
-    0 0 50px #03e9f4,
-    0 0 100px #03e9f4;
+    box-shadow: 0 0 5px lawngreen,
+    0 0 25px limegreen,
+    0 0 50px limegreen,
+    0 0 100px limegreen;
 }
 
 .button_style span {
     position: absolute;
     display: block;
-}
-
-.button_style span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
-    animation: btn-anim1 1s linear infinite;
 }
 
 @keyframes btn-anim1 {
@@ -151,16 +135,6 @@ body {
     }
 }
 
-.button_style span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
-    animation: btn-anim2 1s linear infinite;
-    animation-delay: .25s
-}
-
 @keyframes btn-anim2 {
     0% {
         top: -100%;
@@ -168,16 +142,6 @@ body {
     50%, 100% {
         top: 100%;
     }
-}
-
-.button_style span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
-    animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
 }
 
 @keyframes btn-anim3 {
@@ -189,16 +153,6 @@ body {
     }
 }
 
-.button_style span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
-    animation: btn-anim4 1s linear infinite;
-    animation-delay: .75s
-}
-
 @keyframes btn-anim4 {
     0% {
         bottom: -100%;
@@ -207,7 +161,6 @@ body {
         bottom: 100%;
     }
 }
-
 
 /*------------------only feedback form*/
 #emoji {
@@ -224,28 +177,10 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
-
-.first_part {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: stretch;
-    width: 300px;
-    height: 300px;
-    padding: 10px 20px;
+#smaller_box{
+    width: 60px;
 }
-
-.second_part {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: stretch;
-    width: 300px;
-    height: 300px;
-    padding: 10px 20px;
-}
-
-.third_part {
+.form_part {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -260,15 +195,37 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
-
 .buttons {
     position: absolute;
     left: 40%;
     margin-top: 15px;
 }
-
-.buttons .button_style {
+.buttons .button_style{
     margin-top: 25px;
     margin-right: 50px;
+}
+#button_delete{
+    color: red;
+}
+#button_help{
+    color: #03e9f4;
+}
+#button_help:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
+}
+#button_delete:hover {
+    background: red;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px red,
+    0 0 25px red,
+    0 0 50px red,
+    0 0 100px red;
 }
 
