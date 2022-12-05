@@ -20,7 +20,7 @@
     <form action="#" method="post" autocomplete="on">
         <div class="user-box2">
             <div class="question_part">
-                <div class="first_part">
+                <div class="form_part">
                     <div class="question">
                         <div class="rate">
                             <label>Rate your experience:</label>
@@ -49,7 +49,7 @@
 
                     </div>
                 </div>
-                <div class="second_part">
+                <div class="form_part">
                     <div class="question">
 
                         <label>Will you choose our service again in the future?</label>
@@ -73,7 +73,7 @@
                                   placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
-                <div class="third_part">
+                <div class="form_part">
                     <div class="question">
                         <label>Do you want customer support to contact you back?</label>
                         <div class="form-check">
@@ -96,29 +96,57 @@
                                   placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
+                <div class="form_part">
+                    <div class="question_small">
+                        <label>How old are you?</label>
+                        <div id="smaller_box">
+                        <input pattern="[1-9][8-9]|[2-9][0-9]" class="form-control" name="age" type="number">
+
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>What is your gender?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q8" id="flexRadioDefault2" value="Female">
+                            <label class="form-check-label">
+                                Female
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q8" value="Male">
+                            <label class="form-check-label">
+                                Male
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Occupation?</label>
+                        <input type="text" class="form-control" name="occupation" placeholder="Enter your occupation" required="">
+                    </div>
+                </div>
             </div>
             <p>*Click on HELP to send the feedback and start a live chat with our support</p>
             <div class="buttons">
-                    <div class="button_style">
+                <div class="button_style">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         <input class="button" type="submit" value="Send" name="submit">
-                    </div>
-                <div class="button_style">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <input class="button" type="submit" value="Help" name="submit">
                 </div>
                 <div class="button_style">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input class="button" type="submit" value="Delete" name="submit">
+                    <input id="button_help" type="submit" value="Help" name="submit">
+                </div>
+                <div class="button_style">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <input id="button_delete" type="submit" value="Delete" name="submit">
                 </div>
             </div>
         </div>
