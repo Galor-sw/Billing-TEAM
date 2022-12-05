@@ -3,6 +3,9 @@ const logger = require(`./logger.js`);
 const express = require('express');
 const cors = require('cors');
 
+//data base
+const db = require('./mongoDB/dbConnection');
+const feedBackController = require('./mongoDB/controllers/feedbackController');
 
 const app = express();
 let serLogger = logger.log;
@@ -10,6 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }))
+
+//test get data from db
+feedBackController.feedbackDbController.getFeedbacks();
+
 app.use(cors());
 const feedbackRouter = require('./routers/feedbackRouter');
 const fileLoaderRouter = require('./routers/fileLoaderRouter');
