@@ -34,6 +34,17 @@ $.get(`${window.location.origin}/users/${mail}`)
                 $(".form-check-input").eq(5).prop("checked", true);
 
             $('textarea[name="free_text"]').val(feedBack.free_text);
+            if(feedBack.metaData) {
+                if (feedBack.metaData.age)
+                    $("input[type='number'][name='age']").val(feedBack.metaData.age);
+                if (feedBack.metaData.gender == "Female")
+                    $(".form-check-input").eq(6).prop("checked", true);
+                else if (feedBack.metaData.gender == "Male")
+                    $(".form-check-input").eq(7).prop("checked", true);
+                if (feedBack.metaData.occupation)
+                    $("input[type='text'][name='occupation']").val(feedBack.metaData.occupation);
+            }
+
         }
     })
     .fail((xhr, status, error) => {
@@ -53,6 +64,10 @@ $("document").ready(() => {
         json.answers.choose_again = $("input[type='radio'][name='choose_again']:checked").val();
         json.answers.improvement = $('textarea[name="improvement"]').val();
         json.answers.customer_support = $("input[type='radio'][name='customer_support']:checked").val();
+        json.metaData = {};
+        json.metaData.age = $("input[type='number'][name='age']").val();
+        json.metaData.gender = $("input[type='radio'][name='gender']").val();
+        json.metaData.occupation = $("input[type='text'][name='occupation']").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
             .done((msg) => {
                 if (msg == "The feedback was added") {
