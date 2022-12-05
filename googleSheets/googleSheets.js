@@ -1,5 +1,7 @@
 const {GoogleSpreadsheet} = require('google-spreadsheet');
 const fs = require('fs'); //for reading credentials
+
+GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID
 let rowAddFormat = {
     email: "",
     free_text: "",
@@ -7,7 +9,10 @@ let rowAddFormat = {
     recommend: "",
     choose_again: "",
     improvement: "",
-    customer_support: ""
+    customer_support: "",
+    age: "",
+    gender: "",
+    occupation: ""
 };
 
 const rowToSheetFormat = (row) => {
@@ -18,10 +23,13 @@ const rowToSheetFormat = (row) => {
     rowAddFormat.choose_again = row.answers.choose_again;
     rowAddFormat.improvement = row.answers.improvement;
     rowAddFormat.customer_support = row.answers.customer_support;
+    rowAddFormat.age = row.metaData.age;
+    rowAddFormat.gender = row.metaData.gender;
+    rowAddFormat.occupation = row.metaData.occupation;
 }
 
 
-const RESPONSES_SHEET_ID = '1Ktk1cyaazh-jz1KpSgM03_Ldi8ta9Qlq774YVKsjL6M';
+const RESPONSES_SHEET_ID = GOOGLE_SHEET_ID;
 
 const doc = new GoogleSpreadsheet(RESPONSES_SHEET_ID);
 
