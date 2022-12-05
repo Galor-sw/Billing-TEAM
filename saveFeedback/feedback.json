@@ -20,6 +20,11 @@
         "choose_again": "yes",
         "improvement": "213131231",
         "customer_support": "yes"
+      },
+      "metaData": {
+        "age": "",
+        "gender": "",
+        "occupation": ""
       }
     },
     {
