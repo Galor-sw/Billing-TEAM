@@ -9,6 +9,11 @@
         "choose_again": "yes",
         "improvement": "gal or the TL",
         "customer_support": "no"
+      },
+      "metaData": {
+        "age": "5",
+        "gender": "Female",
+        "occupation": "TLLLLLLLLL"
       }
     },
     {
@@ -31,6 +36,11 @@
         "choose_again": "yes",
         "improvement": "I am not satisfaied",
         "customer_support": "no"
+      },
+      "metaData": {
+        "age": "55",
+        "gender": "Female",
+        "occupation": "ggg"
       }
     },
     {
@@ -64,6 +74,11 @@
         "choose_again": "no",
         "improvement": "im blue da ba di da ba da",
         "customer_support": "no"
+      },
+      "metaData": {
+        "age": "99",
+        "gender": "Female",
+        "occupation": "555"
       }
     },
     {
@@ -83,6 +98,11 @@
         "choose_again": "no",
         "improvement": "You are all wonderfull people",
         "customer_support": "no"
+      },
+      "metaData": {
+        "age": "59",
+        "gender": "Female",
+        "occupation": "gfdg"
       }
     },
     {
