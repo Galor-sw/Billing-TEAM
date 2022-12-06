@@ -3,13 +3,13 @@ const path = require('path');
 const http = require('http');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
-const logger = require(`../logger.js`);
+const serverlogger = require(`../logger.js`);
 const PORT = process.env.chatPort || 3001;
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const serLogger = logger.log;
+const logger = serverlogger.log;
 
 const admin = 'Chat Admin';
 
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'Frontend')))
 
 // Runs when client connect to our sever
 io.on('connection', socket => {
-    serLogger.info("New connection to support live chat established");
+    logger.info("New connection to support live chat established");
     socket.on("joinChat", ({username}) => {
 
         socket.emit('message', formatMessage(admin, `Hey ${username}, welcome to support chat`));
@@ -40,7 +40,7 @@ io.on('connection', socket => {
 
 const turnOnServerChat = () => {
     //init listener
-    server.listen(PORT, () => serLogger.info(`Live chat server running on ${PORT}`));
+    server.listen(PORT, () => logger.info(`Live chat server running on ${PORT}`));
 }
 
 module.exports = {turnOnServerChat};

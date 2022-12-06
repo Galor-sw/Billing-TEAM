@@ -1,10 +1,10 @@
 require("dotenv").config({path: 'config/.env'});
-const logger = require(`./logger.js`);
+const serverlogger = require(`./logger.js`);
 const chatServer = require('./LiveChat/server');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-let serLogger = logger.log;
+let logger = serverlogger.log;
 let chatServerFlag = false;
 app.use(express.json());
 app.use(express.urlencoded({
@@ -34,7 +34,7 @@ app.use('/favicon.ico', express.static('./favicon.ico'));
 //create server
 
 app.listen(process.env.PORT || 3000, () => {
-    serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
+    logger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
 });
 
 //chatServer.turnOnServerChat();

@@ -1,14 +1,14 @@
 const json = require("../saveFeedback/json_save");
 const {addRow, deleteRow} = require("../googleSheets/googleSheets");
-const logger = require("../logger.js");
+const serverlogger = require("../logger.js");
 // const url = require("url");
-let serLogger = logger.log;
+let logger = serverlogger.log;
 
 //create
 exports.createFeedback = (req, res) => {
     let feedbackString = JSON.stringify(req.body);
     if (json.writeFeedBack(JSON.parse(feedbackString)) === 'success') {
-        addRow(req.body).then(() => (serLogger.info('Row added to google sheet successfully')));
+        addRow(req.body).then(() => (logger.info('Row added to google sheet successfully')));
         res.send("The feedback was added");
     } else {
         res.send("The feedback wasn't added");
@@ -26,7 +26,7 @@ exports.getFeedback = (req, res) => {
 exports.deleteFeedback = async (req, res) => {
     const result = await deleteRow(req.params.mail);
     if (result === 'success') {
-        serLogger.info('Row deleted from google sheet successfully');
+        logger.info('Row deleted from google sheet successfully');
         res.send("The feedback was deleted");
     } else {
         res.send("The feedback wasn't deleted");
