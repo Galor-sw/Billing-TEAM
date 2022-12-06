@@ -7,6 +7,9 @@ const cors = require('cors');
 const db = require('./mongoDB/dbConnection');
 const feedBackController = require('./mongoDB/controllers/feedbackController');
 
+// Prints the amount of documents in our db for TESTING.
+console.log(feedBackController.getFeedbacksAmount());
+
 const app = express();
 let logger = serverlogger.log;
 app.use(express.json());
