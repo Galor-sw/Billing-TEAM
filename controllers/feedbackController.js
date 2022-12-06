@@ -13,6 +13,7 @@ exports.createFeedback = (req, res) => {
         res.send("The feedback wasn't added");
     }
 };
+
 //read
 exports.getFeedback = (req, res) => {
     let feedBack = json.isHaveFeedBack(req.params.mail);
