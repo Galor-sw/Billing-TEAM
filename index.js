@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 }))
 
 //test get data from db
-feedBackController.feedbackDbController.getFeedbacks();
+// feedBackController.feedbackDbController.getFeedbacks();
 
 app.use(cors());
 const feedbackRouter = require('./routers/feedbackRouter');
