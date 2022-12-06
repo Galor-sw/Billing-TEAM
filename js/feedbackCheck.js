@@ -18,7 +18,7 @@ $.get(`${window.location.origin}/users/${mail}`)
             $('input[name="emoji"]').val(feedBack.rate);
             changeRate(feedBack.rate);
 
-            if(feedBack.answers[0]) {
+            if (feedBack.answers[0]) {
                 if (feedBack.answers[0].recommend == "yes")
                     $(".form-check-input").eq(0).prop("checked", true);
                 else if (feedBack.answers[0].recommend == "no")
@@ -38,7 +38,7 @@ $.get(`${window.location.origin}/users/${mail}`)
             }
             $('textarea[name="free_text"]').val(feedBack.free_text);
 
-            if(feedBack.metaData[0]) {
+            if (feedBack.metaData[0]) {
                 if (feedBack.metaData[0].age)
                     $("input[type='number'][name='age']").val(feedBack.metaData[0].age);
                 if (feedBack.metaData[0].gender == "Female")
@@ -48,7 +48,6 @@ $.get(`${window.location.origin}/users/${mail}`)
                 if (feedBack.metaData[0].occupation)
                     $("input[type='text'][name='occupation']").val(feedBack.metaData[0].occupation);
             }
-
         }
     })
     .fail((xhr, status, error) => {
