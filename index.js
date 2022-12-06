@@ -1,5 +1,5 @@
 require("dotenv").config({path: 'config/.env'});
-const logger = require(`./logger.js`);
+const serverlogger = require(`./logger.js`);
 const express = require('express');
 const cors = require('cors');
 
@@ -8,7 +8,7 @@ const db = require('./mongoDB/dbConnection');
 const feedBackController = require('./mongoDB/controllers/feedbackController');
 
 const app = express();
-let serLogger = logger.log;
+let logger = serverlogger.log;
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -40,6 +40,6 @@ app.use('/favicon.ico', express.static('./favicon.ico'));
 
 //create server
 app.listen(process.env.PORT || 3000, () => {
-    serLogger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
+    logger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
 });
 

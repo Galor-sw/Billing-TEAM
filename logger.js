@@ -10,11 +10,27 @@ const log = winston.createLogger({
         format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
         format.json()
     ),
-    transports: [
-        new transports.Console(),
-        new transports.File({filename: 'logs.txt', level: 'error'}),
-        new transports.File({filename: 'logs.txt', level:'info'})
-    ]
+    transports:[
+        new transports.Console({
+            format:format.combine(
+                format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+                format.json(),
+                format.printf(info => `${[info.timestamp]} : ${info.level} : ${info.message}`),)
+        }),
+        new transports.File({
+            filename: 'logs.txt',
+            format:format.combine(
+                format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+                format.json(),
+                format.printf(info => `${[info.timestamp]} : ${info.level} : ${info.message}`),
+            )}),
+        new transports.File({
+            filename: 'logs.txt',
+            format:format.combine(
+                format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+                format.json(),
+                format.printf(error => `${[error.timestamp]} : ${error.level} : ${error.message}`),
+            )})]
 });
 module.exports.log = log;
 
