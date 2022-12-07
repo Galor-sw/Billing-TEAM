@@ -43,6 +43,6 @@ app.use('/favicon.ico', express.static('./favicon.ico'));
 
 //create server
 app.listen(process.env.PORT || 3000, () => {
-    logger.info(`Example app listening on port ${process.env.PORT} status ${process.env.STATUS}`)
+    logger.info(`Server is listening on port ${process.env.PORT} status ${process.env.STATUS}`)
 });
 
