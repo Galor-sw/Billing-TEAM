@@ -2,6 +2,7 @@ const json = require("../saveFeedback/json_save");
 const {addRow, deleteRow} = require("../googleSheets/googleSheets");
 const serverlogger = require("../logger.js");
 let logger = serverlogger.log;
+const controller = require('../mongoDB/controllers/feedbackController');
 
 //create
 exports.createFeedback = (req, res) => {
@@ -15,14 +16,16 @@ exports.createFeedback = (req, res) => {
 };
 
 //read
-exports.getFeedback = (req, res) => {
-    let feedBack = json.isHaveFeedBack(req.params.mail);
-    if (feedBack != '') {
-        res.send(JSON.stringify(feedBack));
-    } else {
-        res.send("The user hasn't given a feedback yet");
-    }
-}
+// exports.getFeedback = (req, res) => {
+    // console.log('mail is:' +req.params.mail);
+    // controller.feedbackDbController.getFeedbackByMail(req,res);
+    // let feedBack = json.isHaveFeedBack(req.params.mail);
+    // if (feedBack != '') {
+    //     res.send(JSON.stringify(feedBack));
+    // } else {
+    //     res.send("The user hasn't given a feedback yet");
+    // } }
+
 exports.deleteFeedback = async (req, res) => {
     const result = await deleteRow(req.params.mail);
     if (result === 'success') {

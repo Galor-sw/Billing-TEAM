@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link href="../favicon.ico" rel="icon" type="image/x-icon">
     <script
-            src="https://code.jquery.com/jquery-3.6.1.js"
+            crossorigin="anonymous"
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-            crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="../js/feedbackCheck.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="../css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Email Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" rel="stylesheet">
 </head>
 <body>
 <div class="login-box" id="form-box">
     <h2>Feedback</h2>
 
-    <form action="#" method="post" autocomplete="on">
+    <form action="#" autocomplete="on" method="post">
         <div class="user-box2">
             <div class="question_part">
                 <div class="form_part">
@@ -25,9 +25,9 @@
                         <div class="rate">
                             <label>Rate your experience:</label>
                             <div id="emoji">😑</div>
-                            <input type="range" min="0" max="4" step="1" id="customRange3" class="form-range"
-                                   name="emoji"
-                                   onChange=changeRate(this.value);>
+                            <input class="form-range" id="customRange3" max="4" min="0" name="emoji" onChange=changeRate(this.value);
+                                   step="1"
+                                   type="range">
                         </div>
                     </div>
                     <div class="question">
@@ -35,13 +35,13 @@
                         <label>Will you recommend our service?</label>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="recommend" value="yes">
+                            <input class="form-check-input" name="recommend" type="radio" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="recommend" value="no">
+                            <input class="form-check-input" name="recommend" type="radio" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -54,13 +54,13 @@
 
                         <label>Will you choose our service again in the future?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choose_again" value="yes">
+                            <input class="form-check-input" name="choose_again" type="radio" value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choose_again" value="no">
+                            <input class="form-check-input" name="choose_again" type="radio" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -68,23 +68,23 @@
                     </div>
                     <div class="question">
                         <label>What can we improve on our service?</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" cols="30"
-                                  name="improvement"
-                                  placeholder="Enter text here..."></textarea>
+                        <textarea class="form-control" cols="30" id="exampleFormControlTextarea1" name="improvement"
+                                  placeholder="Enter text here..."
+                                  rows="4"></textarea>
                     </div>
                 </div>
                 <div class="form_part">
                     <div class="question">
                         <label>Do you want customer support to contact you back?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_support" id="flexRadioDefault1"
+                            <input class="form-check-input" id="flexRadioDefault1" name="customer_support" type="radio"
                                    value="yes">
                             <label class="form-check-label">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="customer_support" value="no">
+                            <input class="form-check-input" name="customer_support" type="radio" value="no">
                             <label class="form-check-label">
                                 No
                             </label>
@@ -92,30 +92,30 @@
                     </div>
                     <div class="question">
                         <label>Free text</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="4" cols="30"
-                                  name="free_text"
-                                  placeholder="Enter text here..."></textarea>
+                        <textarea class="form-control" cols="30" id="exampleFormControlTextarea2" name="free_text"
+                                  placeholder="Enter text here..."
+                                  rows="4"></textarea>
                     </div>
                 </div>
                 <div class="form_part">
                     <div class="question_small">
                         <label>How old are you?</label>
                         <div id="smaller_box">
-                            <input min="18" max="99" class="form-control" name="age" type="number">
+                            <input class="form-control" max="99" min="18" name="age" type="number">
 
                         </div>
                     </div>
                     <div class="question">
                         <label>What is your gender?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2"
+                            <input class="form-check-input" id="flexRadioDefault2" name="gender" type="radio"
                                    value="Female">
                             <label class="form-check-label">
                                 Female
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" value="Male">
+                            <input class="form-check-input" name="gender" type="radio" value="Male">
                             <label class="form-check-label">
                                 Male
                             </label>
@@ -123,8 +123,8 @@
                     </div>
                     <div class="question">
                         <label>Occupation?</label>
-                        <input type="text" class="form-control" name="occupation" placeholder="Enter your occupation"
-                               required="">
+                        <input class="form-control" name="occupation" placeholder="Enter your occupation" required=""
+                               type="text">
                     </div>
                 </div>
             </div>
@@ -135,21 +135,21 @@
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input class="button" type="submit" value="Send" name="submit">
+                    <input class="button" name="submit" type="submit" value="Send">
                 </div>
                 <div class="button_style">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input id="button_help" type="submit" value="Help" name="submit">
+                    <input id="button_help" name="submit" type="submit" value="Help">
                 </div>
                 <div class="button_style">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input id="button_delete" type="submit" value="Delete" name="submit">
+                    <input id="button_delete" name="delete" type="submit" value="Delete">
                 </div>
             </div>
         </div>

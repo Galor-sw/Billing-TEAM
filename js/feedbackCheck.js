@@ -14,37 +14,40 @@ $.get(`${window.location.origin}/users/${mail}`)
         if (msg != "The user hasn't given a feedback yet") {
             isHaveFeedBack = true;
             let feedBack = JSON.parse(msg);
+
             $('input[name="emoji"]').val(feedBack.rate);
             changeRate(feedBack.rate);
-            if (feedBack.answers.recommend == "yes")
-                $(".form-check-input").eq(0).prop("checked", true);
-            else if (feedBack.answers.recommend == "no")
-                $(".form-check-input").eq(1).prop("checked", true);
 
-            if (feedBack.answers.choose_again == "yes")
-                $(".form-check-input").eq(2).prop("checked", true);
-            else if (feedBack.answers.choose_again == "no")
-                $(".form-check-input").eq(3).prop("checked", true);
+            if (feedBack.answers[0]) {
+                if (feedBack.answers[0].recommend == "yes")
+                    $(".form-check-input").eq(0).prop("checked", true);
+                else if (feedBack.answers[0].recommend == "no")
+                    $(".form-check-input").eq(1).prop("checked", true);
 
-            $('textarea[name="improvement"]').val(feedBack.answers.improvement);
+                if (feedBack.answers[0].choose_again == "yes")
+                    $(".form-check-input").eq(2).prop("checked", true);
+                else if (feedBack.answers[0].choose_again == "no")
+                    $(".form-check-input").eq(3).prop("checked", true);
 
-            if (feedBack.answers.customer_support == "yes")
-                $(".form-check-input").eq(4).prop("checked", true);
-            else if (feedBack.answers.customer_support == "no")
-                $(".form-check-input").eq(5).prop("checked", true);
+                $('textarea[name="improvement"]').val(feedBack.answers[0].improvement);
 
-            $('textarea[name="free_text"]').val(feedBack.free_text);
-            if(feedBack.metaData) {
-                if (feedBack.metaData.age)
-                    $("input[type='number'][name='age']").val(feedBack.metaData.age);
-                if (feedBack.metaData.gender == "Female")
-                    $(".form-check-input").eq(6).prop("checked", true);
-                else if (feedBack.metaData.gender == "Male")
-                    $(".form-check-input").eq(7).prop("checked", true);
-                if (feedBack.metaData.occupation)
-                    $("input[type='text'][name='occupation']").val(feedBack.metaData.occupation);
+                if (feedBack.answers[0].customer_support == "yes")
+                    $(".form-check-input").eq(4).prop("checked", true);
+                else if (feedBack.answers[0].customer_support == "no")
+                    $(".form-check-input").eq(5).prop("checked", true);
             }
+            $('textarea[name="free_text"]').val(feedBack.free_text);
 
+            if (feedBack.metaData[0]) {
+                if (feedBack.metaData[0].age)
+                    $("input[type='number'][name='age']").val(feedBack.metaData[0].age);
+                if (feedBack.metaData[0].gender == "Female")
+                    $(".form-check-input").eq(6).prop("checked", true);
+                else if (feedBack.metaData[0].gender == "Male")
+                    $(".form-check-input").eq(7).prop("checked", true);
+                if (feedBack.metaData[0].occupation)
+                    $("input[type='text'][name='occupation']").val(feedBack.metaData[0].occupation);
+            }
         }
     })
     .fail((xhr, status, error) => {
