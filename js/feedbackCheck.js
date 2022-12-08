@@ -56,6 +56,8 @@ $.get(`${window.location.origin}/users/${mail}`)
 
 let json = {};
 $("document").ready(() => {
+
+
     // Send the feedback to the server to save
     $('input[name="submit"]').click((e) => {
         e.preventDefault();
@@ -69,7 +71,7 @@ $("document").ready(() => {
         json.answers.customer_support = $("input[type='radio'][name='customer_support']:checked").val();
         json.metaData = {};
         json.metaData.age = $("input[type='number'][name='age']").val();
-        json.metaData.gender = $("input[type='radio'][name='gender']").val();
+        json.metaData.gender = $("input[type='radio'][name='gender']:checked").val();
         json.metaData.occupation = $("input[type='text'][name='occupation']").val();
         $.post(`${window.location.origin}/users/${mail}/feedback`, json)
             .done((msg) => {
