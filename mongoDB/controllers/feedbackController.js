@@ -7,7 +7,7 @@ const logger = serverlogger.log;
 exports.getFeedbacksAmount = (req, res) => {
     Feedback.count({})
         .then(amount => {
-            console.log(amount)
+            console.log('The total amount of feedbacks is: ' +amount);
         })
         .catch(err => {
             console.log(err)
@@ -90,7 +90,48 @@ exports.deleteFeedback = (req, res) => {
         });
 };
 
-const increaseCounter = () => {
+// const increaseCounter = () => {
+//
+// }
 
-}
+exports.getFeedbackByLowerAge = (req, res) => {
+    Feedback.find({'metaData.age': {$lte: req.params.age}})
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => logger.error(err));
+};
+
+exports.getFeedbackByHigherAge = (req, res) => {
+    Feedback.find({'metaData.age': {$gte: req.params.age}})
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => logger.error(err));
+};
+
+exports.getFeedbackByEqualAge = (req, res) => {
+    Feedback.find({'metaData.age': req.params.age})
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => logger.error(err));
+};
+
+exports.getFeedbackByGender = (req, res) => {
+    Feedback.find({'metaData.gender': req.params.gender})
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => logger.error(err));
+};
+
+// This function is not ready yet - I've asked David on slack what is the purpose of it.
+exports.getFeedbackByOccupation = (req, res) => {
+    Feedback.find({'metaData.occupation': req.params.occupation})
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => logger.error(err));
+};
 
