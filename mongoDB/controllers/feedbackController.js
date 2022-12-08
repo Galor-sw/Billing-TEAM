@@ -1,7 +1,7 @@
 const Feedback = require('../models/feedback')
 const json = require("../../saveFeedback/json_save");
 const serverlogger = require(`../../logger.js`);
-const {addRow} = require("../../googleSheets/googleSheets");
+const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const logger = serverlogger.log;
 
 exports.getFeedbacksAmount = (req, res) => {
@@ -78,8 +78,14 @@ exports.setFeedback = (req, res) => {
 exports.deleteFeedback = (req, res) => {
     Feedback.deleteOne({email: req.params.mail})
         .then(docs => {
-            if (docs.deletedCount != 0) {
-                res.send("The feedback was deleted");
+            if (docs.deletedCount != 0) { // Need to add async in order to find the result
+                const result = deleteRow(req.params.mail);
+                if (result == 'success') {
+                    logger.info('Row deleted from google sheet successfully');
+                    res.send("The feedback was deleted");
+                } else {
+                    res.send("The feedback wasn't deleted");
+                    }
             } else {
                 res.send("There isn't any feedback to delete");
             }
