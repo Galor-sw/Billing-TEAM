@@ -1,16 +1,17 @@
-const Feedback = require('../models/feedback')
-const json = require("../../saveFeedback/json_save");
-const serverlogger = require(`../../logger.js`);
+const Feedback = require('../models/feedback');
+const serverLogger = require(`../../logger.js`);
 const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
-const logger = serverlogger.log;
+const counterController = require("./counterController");
+const logger = serverLogger.log;
 
 exports.getFeedbacksAmount = (req, res) => {
     Feedback.count({})
         .then(amount => {
-            console.log('The total amount of feedbacks is: ' +amount);
+            //Change it for returning this amount
+            console.log('The total amount of feedbacks is: ' + amount);
         })
         .catch(err => {
-            console.log(err)
+            console.log(err => logger.error(err))
         })
 }
 
@@ -20,7 +21,7 @@ exports.getFeedbacks = (req, res) => {
         .then(docs => {
             console.log(JSON.stringify(docs));
         })
-        .catch(err => console.log(err));
+        .catch(err => logger.error(err));
 };
 
 exports.getFeedbackByMail = (req, res) => {
@@ -68,6 +69,9 @@ exports.setFeedback = (req, res) => {
                     logger.error(err)
                     res.send("The feedback wasn't added");
                 });
+
+            counterController.updateCounter();
+
         })
         .catch(err => {
             // logger is ok here? we should send more data?
@@ -85,7 +89,7 @@ exports.deleteFeedback = (req, res) => {
                     res.send("The feedback was deleted");
                 } else {
                     res.send("The feedback wasn't deleted");
-                    }
+                }
             } else {
                 res.send("There isn't any feedback to delete");
             }
@@ -95,10 +99,6 @@ exports.deleteFeedback = (req, res) => {
             logger.error(err);
         });
 };
-
-// const increaseCounter = () => {
-//
-// }
 
 exports.getFeedbackByLowerAge = (req, res) => {
     Feedback.find({'metaData.age': {$lte: req.params.age}})
