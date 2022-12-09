@@ -2,8 +2,9 @@ const express = require('express');
 const feedBackController = require("../mongoDB/controllers/feedbackController");
 const feedbackRouter = express.Router();
 
-feedbackRouter.get('/:mail', feedBackController.getFeedbackByMail);
+feedbackRouter.post('/emailCheck', feedBackController.isEmailExists);
 
+feedbackRouter.get('/:mail', feedBackController.getFeedbackByMail);
 feedbackRouter.post('/:mail/feedback', feedBackController.setFeedback);
 feedbackRouter.delete('/:mail/feedback', feedBackController.deleteFeedback);
 feedbackRouter.get('/feedback/lowerage/:age', feedBackController.getFeedbackByLowerAge);

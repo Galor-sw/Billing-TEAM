@@ -26,7 +26,8 @@ const chatRouter = require('./routers/chatRouter');
 const counterRouter = require('./routers/counterRouter');
 
 //user
-app.use('/emailCheck', userRouter);
+// We moved the function to feedback router since we won't check it by JSON, but IAM's API OR our DB.
+// app.use('/emailCheck', userRouter);
 
 //feedback
 app.use('/users', feedbackRouter);
