@@ -7,8 +7,9 @@ const cors = require('cors');
 const db = require('./mongoDB/dbConnection');
 const feedBackController = require('./mongoDB/controllers/feedbackController');
 
-// Prints the amount of documents in our db for TESTING.
-console.log(feedBackController.getFeedbacksAmount());
+// test counter fetch
+// const counterController = require("./mongoDB/controllers/counterController");
+// console.log("here" + counterController.getCounter());
 
 const app = express();
 let logger = serverlogger.log;
@@ -17,20 +18,21 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-//test get data from db
-// feedBackController.feedbackDbController.getFeedbacks();
-
 app.use(cors());
 const feedbackRouter = require('./routers/feedbackRouter');
 const fileLoaderRouter = require('./routers/fileLoaderRouter');
 const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
+const counterRouter = require('./routers/counterRouter');
 
 //user
 app.use('/emailCheck', userRouter);
 
 //feedback
 app.use('/users', feedbackRouter);
+
+//feedbacks counter
+app.use('/counter', counterRouter);
 
 //chat support
 app.use('/contactSupport', chatRouter);
