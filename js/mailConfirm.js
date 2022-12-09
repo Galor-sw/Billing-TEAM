@@ -1,9 +1,9 @@
 // Input email confirmation
-const IAMbackupbyJson = () => {
+const IAMbackupbyDB = () => {
     let mail = $('input[name="mail"]').val();
-    let jsonMail = {"mail": mail};
+    let DBMail = {"mail": mail};
     if (mail) {
-        $.post(`${window.location.origin}/emailCheck`, jsonMail)
+        $.post(`${window.location.origin}/users/emailCheck`, DBMail)
             .done(function (msg) {
                 if (msg == "The email exists") {
                     window.location.replace(`${window.location.origin}/loginAndForm/form.html?mail=${mail}`);
@@ -38,7 +38,7 @@ $("document").ready(() => {
                     }
                 })
                 .fail((xhr, status, error) => {
-                    IAMbackupbyJson();
+                    IAMbackupbyDB();
                 })
         }
 
