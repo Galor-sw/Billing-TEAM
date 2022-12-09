@@ -4,6 +4,19 @@ const serverlogger = require(`../../logger.js`);
 const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const logger = serverlogger.log;
 
+exports.isEmailExists = (req, res) => {
+    Feedback.findOne({'email': req.body.mail})
+        .then(result => {
+            if (result) {
+                res.send("The email exists");
+            } else {
+                res.send("The email does not exist, try again")
+            }
+        })
+        .catch(err => logger.error(err));
+};
+
+
 exports.getFeedbacksAmount = (req, res) => {
     Feedback.count({})
         .then(amount => {
