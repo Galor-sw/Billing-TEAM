@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const consts = require('./constants');
+
+const serverLogger = require('../logger');
+const logger = serverLogger.log;
+
 const {DB_HOST, DB_USER, DB_PASS} = consts;
 const url = DB_HOST;
 
@@ -14,6 +18,6 @@ const options = {
 mongoose
     .connect(url, options)
     .then(() => {
-        console.log('connected');
+        logger.info('connected to Billing-DB')
     })
-    .catch(err => console.log(`connection error: ${err}`));
+    .catch(err => logger.error(`connection error: ${err}`));
