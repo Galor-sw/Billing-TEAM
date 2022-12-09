@@ -2,6 +2,7 @@ const express = require('express');
 const feedBackController = require("../mongoDB/controllers/feedbackController");
 const feedbackRouter = express.Router();
 
+feedbackRouter.post('/emailCheck', feedBackController.getFeedbackByMail);
 feedbackRouter.get('/:mail', feedBackController.getFeedbackByMail);
 
 feedbackRouter.post('/:mail/feedback', feedBackController.setFeedback);
