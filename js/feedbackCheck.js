@@ -3,10 +3,19 @@ const changeRate = (val) => {
     document.getElementById("emoji").textContent = emojis[val];
 }
 
-let mail = '';
 let urlParams = new URLSearchParams(window.location.search);
-mail = urlParams.get('mail');
+let mail = urlParams.get('mail');
 let isHaveFeedBack = false;
+
+$.get(`${window.location.origin}/counter`)
+    .done(counter => {
+        //HERE IS THE NUMBER OF FEEDBACKS TOTAL SENT, WE NEED TO SHOW IT IN UI.
+        console.log(counter);
+    })
+    .fail((xhr, status, error) => {
+        console.error("failed send to server" + error);
+    });
+
 
 // Check if the user gave feedback already and set it to the form
 $.get(`${window.location.origin}/users/${mail}`)
