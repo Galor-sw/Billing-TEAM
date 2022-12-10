@@ -7,6 +7,8 @@ const cors = require('cors');
 const db = require('./mongoDB/dbConnection');
 const feedBackController = require('./mongoDB/controllers/feedbackController');
 
+db.connectToDB();
+
 
 const app = express();
 let logger = serverlogger.log;

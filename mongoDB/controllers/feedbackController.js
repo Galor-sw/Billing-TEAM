@@ -4,6 +4,7 @@ const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const counterController = require("./counterController");
 const {syncIndexes} = require("mongoose");
 const logger = serverLogger.log;
+const mailConfirmation = require('../../Growth-TeamAPI/ConfirmationEmail')
 const URL = process.env.URL;
 
 exports.isEmailExists = (req, res) => {
@@ -72,6 +73,7 @@ exports.setFeedback = (req, res) => {
                 });
 
             counterController.updateCounter();
+            mailConfirmation.confirmationSend(feedbackString);
 
         })
         .catch(err => {
@@ -122,4 +124,3 @@ exports.getFeedbackByOccupation = (req, res) => {
         })
         .catch(err => logger.error(err));
 };
-

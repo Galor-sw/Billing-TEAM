@@ -14,9 +14,13 @@ const options = {
     pass: DB_PASS
 };
 
-mongoose
-    .connect(url, options)
-    .then(() => {
-        logger.info('connected to Billing-DB')
-    })
-    .catch(err => logger.error(`connection error: ${err}`));
+
+exports.connectToDB = () => {
+    mongoose
+        .connect(url, options)
+        .then(() => {
+            logger.info('connected to Billing-DB')
+        })
+        .catch(err => logger.error(`connection error: ${err}`));
+}
+
