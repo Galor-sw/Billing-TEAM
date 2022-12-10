@@ -29,20 +29,16 @@ $("document").ready(() => {
         if (mail) {
             $.get(`http://iam-team.onrender.com/api/login/${mail}`)
                 .done(msg => {
-                    if (msg == "The user exists")
-                    {
+                    if (msg == "The user exists") {
                         window.location.replace(`${window.location.origin}/loginAndForm/form.html?mail=${mail}`);
-                    }
-                    else {
+                    } else {
                         document.getElementById("failmsg").innerHTML = "The email does not exist, try again";
                     }
                 })
                 .fail((xhr, status, error) => {
+
                     IAMbackupbyDB();
                 })
         }
-
-
-
     });
 });
