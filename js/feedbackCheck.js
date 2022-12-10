@@ -9,10 +9,7 @@ let isHaveFeedBack = false;
 
 $.get(`${window.location.origin}/counter`)
     .done(counter => {
-        //HERE IS THE NUMBER OF FEEDBACKS TOTAL SENT, WE NEED TO SHOW IT IN UI.
-        // console.log(counter);
-        document.getElementsByTagName("p")[0].innerHTML= "Number of feedbacks that sent: "+counter;
-
+        document.getElementsByTagName("p")[0].innerHTML = "Number of feedbacks that sent: " + counter;
     })
     .fail((xhr, status, error) => {
         console.error("failed send to server" + error);
@@ -67,8 +64,6 @@ $.get(`${window.location.origin}/users/${mail}`)
 
 let json = {};
 $("document").ready(() => {
-
-
     // Send the feedback to the server to save
     $('input[name="submit"]').click((e) => {
         e.preventDefault();
