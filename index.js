@@ -9,6 +9,7 @@ const feedBackController = require('./mongoDB/controllers/feedbackController');
 
 db.connectToDB();
 
+
 const app = express();
 let logger = serverlogger.log;
 app.use(express.json());
@@ -19,7 +20,6 @@ app.use(express.urlencoded({
 app.use(cors());
 const feedbackRouter = require('./routers/feedbackRouter');
 const fileLoaderRouter = require('./routers/fileLoaderRouter');
-const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
 const counterRouter = require('./routers/counterRouter');
 

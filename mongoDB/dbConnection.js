@@ -14,7 +14,7 @@ const options = {
     pass: DB_PASS
 };
 
-// change to Logger!
+
 exports.connectToDB = () => {
     mongoose
         .connect(url, options)
@@ -23,3 +23,4 @@ exports.connectToDB = () => {
         })
         .catch(err => logger.error(`connection error: ${err}`));
 }
+

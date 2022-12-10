@@ -2,14 +2,16 @@ const Feedback = require('../models/feedback');
 const serverLogger = require(`../../logger.js`);
 const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const counterController = require("./counterController");
+const {syncIndexes} = require("mongoose");
 const logger = serverLogger.log;
 const mailConfirmation = require('../../Growth-TeamAPI/ConfirmationEmail')
+const URL = process.env.URL;
 
 exports.isEmailExists = (req, res) => {
     Feedback.findOne({'email': req.body.mail})
         .then(result => {
             if (result) {
-                res.send("The email exists");
+                res.send(URL);
             } else {
                 res.send("The email does not exist, try again")
             }
@@ -18,22 +20,10 @@ exports.isEmailExists = (req, res) => {
 };
 
 
-exports.getFeedbacksAmount = (req, res) => {
-    Feedback.count({})
-        .then(amount => {
-            //Change it for returning this amount
-            console.log('The total amount of feedbacks is: ' + amount);
-        })
-        .catch(err => {
-            console.log(err => logger.error(err))
-        })
-}
-
-// handle the function instead of console.log
 exports.getFeedbacks = (req, res) => {
     Feedback.find({})
         .then(docs => {
-            console.log(JSON.stringify(docs));
+            res.send(JSON.stringify(docs));
         })
         .catch(err => logger.error(err));
 };
@@ -51,7 +41,6 @@ exports.getFeedbackByMail = (req, res) => {
 };
 
 exports.setFeedback = (req, res) => {
-
     const feedbackString = JSON.parse(JSON.stringify(req.body));
 
     Feedback.deleteOne({email: feedbackString.email})
@@ -79,7 +68,6 @@ exports.setFeedback = (req, res) => {
                     res.send("The feedback was added");
                 })
                 .catch(err => {
-                    // logger is ok here? we should send more data?
                     logger.error(err)
                     res.send("The feedback wasn't added");
                 });
@@ -89,16 +77,15 @@ exports.setFeedback = (req, res) => {
 
         })
         .catch(err => {
-            // logger is ok here? we should send more data?
-            logger.error(err)
+            logger.error("The feedback was not updated : " + err);
         })
 };
 
 exports.deleteFeedback = (req, res) => {
     Feedback.deleteOne({email: req.params.mail})
-        .then(docs => {
-            if (docs.deletedCount != 0) { // Need to add async in order to find the result
-                const result = deleteRow(req.params.mail);
+        .then(async (docs) => {
+            if (docs.deletedCount != 0) {
+                const result = await deleteRow(req.params.mail);
                 if (result == 'success') {
                     logger.info('Row deleted from google sheet successfully');
                     res.send("The feedback was deleted");
@@ -110,28 +97,11 @@ exports.deleteFeedback = (req, res) => {
             }
         })
         .catch(err => {
-            // logger is ok here? we should send more data?
             logger.error(err);
         });
 };
 
-exports.getFeedbackByLowerAge = (req, res) => {
-    Feedback.find({'metaData.age': {$lte: req.params.age}})
-        .then(docs => {
-            res.send(docs);
-        })
-        .catch(err => logger.error(err));
-};
-
-exports.getFeedbackByHigherAge = (req, res) => {
-    Feedback.find({'metaData.age': {$gte: req.params.age}})
-        .then(docs => {
-            res.send(docs);
-        })
-        .catch(err => logger.error(err));
-};
-
-exports.getFeedbackByEqualAge = (req, res) => {
+exports.getFeedbackByAge = (req, res) => {
     Feedback.find({'metaData.age': req.params.age})
         .then(docs => {
             res.send(docs);
@@ -147,7 +117,6 @@ exports.getFeedbackByGender = (req, res) => {
         .catch(err => logger.error(err));
 };
 
-// This function is not ready yet - I've asked David on slack what is the purpose of it.
 exports.getFeedbackByOccupation = (req, res) => {
     Feedback.find({'metaData.occupation': req.params.occupation})
         .then(docs => {
