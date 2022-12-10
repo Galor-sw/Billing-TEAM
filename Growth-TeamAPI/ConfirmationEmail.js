@@ -7,10 +7,10 @@ exports.confirmationSend = (feedback) => {
     writeMail(feedback);
     axios.post('https://mail-service-69zm.onrender.com/api/mail/sendMail', template)
         .then(test => {
-            console.log(test)
+            logger.info('a mail was sent to the client');
         })
         .catch(err => {
-            logger.error(`failed to send a mail conformation. ${err}`)
+            logger.error(`failed to send a mail conformation. ${err}`);
         })
 }
 
