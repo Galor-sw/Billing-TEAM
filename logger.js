@@ -1,11 +1,6 @@
-const moment = require('moment');
-const fs = require('fs');
-const { EventEmitter } = require('events');
-const path = require('path');
-const winston = require('winston');
 const {transports, createLogger, format} = require('winston');
 
-const log = winston.createLogger({
+const log = createLogger({
     format: format.combine(
         format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
         format.json()
