@@ -10,7 +10,9 @@ let isHaveFeedBack = false;
 $.get(`${window.location.origin}/counter`)
     .done(counter => {
         //HERE IS THE NUMBER OF FEEDBACKS TOTAL SENT, WE NEED TO SHOW IT IN UI.
-        console.log(counter);
+        // console.log(counter);
+        document.getElementsByTagName("p")[0].innerHTML= "Number of feedbacks that sent: "+counter;
+
     })
     .fail((xhr, status, error) => {
         console.error("failed send to server" + error);
