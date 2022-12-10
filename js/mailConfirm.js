@@ -36,7 +36,7 @@ $("document").ready(() => {
                     }
                 })
                 .fail((xhr, status, error) => {
-
+                    console.log('fail');
                     IAMbackupbyDB();
                 })
         }
