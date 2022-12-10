@@ -27,7 +27,7 @@ $("document").ready(() => {
         let mail = $('input[name="mail"]').val();
         // Adding here the API of IAM - we'll validate through their server
         if (mail) {
-            $.get(`http://iam-team.onrender.com/login/${mail}`)
+            $.get(`https://iam-team.onrender.com/login/${mail}`)
                 .done(msg => {
                     if (msg == "The user exists") {
 
