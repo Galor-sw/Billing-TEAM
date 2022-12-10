@@ -3,6 +3,7 @@ const serverLogger = require(`../../logger.js`);
 const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const counterController = require("./counterController");
 const logger = serverLogger.log;
+const mailConfirmation = require('../../Growth-TeamAPI/ConfirmationEmail')
 
 exports.isEmailExists = (req, res) => {
     Feedback.findOne({'email': req.body.mail})
@@ -84,6 +85,7 @@ exports.setFeedback = (req, res) => {
                 });
 
             counterController.updateCounter();
+            mailConfirmation.confirmationSend(feedbackString);
 
         })
         .catch(err => {
@@ -153,4 +155,3 @@ exports.getFeedbackByOccupation = (req, res) => {
         })
         .catch(err => logger.error(err));
 };
-
