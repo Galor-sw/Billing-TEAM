@@ -2,6 +2,7 @@ const Feedback = require('../models/feedback');
 const serverLogger = require(`../../logger.js`);
 const {addRow, deleteRow} = require("../../googleSheets/googleSheets");
 const counterController = require("./counterController");
+const {syncIndexes} = require("mongoose");
 const logger = serverLogger.log;
 
 exports.isEmailExists = (req, res) => {
@@ -50,7 +51,6 @@ exports.getFeedbackByMail = (req, res) => {
 };
 
 exports.setFeedback = (req, res) => {
-
     const feedbackString = JSON.parse(JSON.stringify(req.body));
 
     Feedback.deleteOne({email: feedbackString.email})
@@ -88,15 +88,15 @@ exports.setFeedback = (req, res) => {
         })
         .catch(err => {
             // logger is ok here? we should send more data?
-            logger.error(err)
+            logger.error("The feedback was not updated : " +err);
         })
 };
 
-exports.deleteFeedback = (req, res) => {
+exports.deleteFeedback =  (req, res) => {
     Feedback.deleteOne({email: req.params.mail})
-        .then(docs => {
-            if (docs.deletedCount != 0) { // Need to add async in order to find the result
-                const result = deleteRow(req.params.mail);
+        .then(async (docs) =>  {
+            if (docs.deletedCount != 0) {
+                const result = await deleteRow(req.params.mail);
                 if (result == 'success') {
                     logger.info('Row deleted from google sheet successfully');
                     res.send("The feedback was deleted");
