@@ -29,6 +29,7 @@ This project consist of several fetchers:
 <li>run in render: https://billing-team-repo.onrender.com </li>
 <li>google sheet link: https://docs.google.com/spreadsheets/d/1Ktk1cyaazh-jz1KpSgM03_Ldi8ta9Qlq774YVKsjL6M/edit#gid=0 </li>
 <li>mongoDB: https://cloud.mongodb.com/v2/638e4c653a10564fd0a6e4cb#metrics/replicaSet/638e4d3a5175c52372890869/explorer/billingDB/feedbacks/find</li>
+<li>API DOCS: https://documenter.getpostman.com/view/24150253/2s8YzTTMfx</li>
 </ol>
 
 <h3>How to use the project:</h3>
