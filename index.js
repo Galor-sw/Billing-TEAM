@@ -18,11 +18,8 @@ app.use(express.urlencoded({
 app.use(cors());
 const feedbackRouter = require('./routers/feedbackRouter');
 const fileLoaderRouter = require('./routers/fileLoaderRouter');
-const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
 const counterRouter = require('./routers/counterRouter');
-
-// We moved the function to feedback router since we won't check it by JSON, but IAM's API OR our DB.
 
 //feedback
 app.use('/users', feedbackRouter);

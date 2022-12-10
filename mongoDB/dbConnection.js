@@ -14,7 +14,6 @@ const options = {
     pass: DB_PASS
 };
 
-// change to Logger!
 mongoose
     .connect(url, options)
     .then(() => {
