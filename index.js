@@ -7,9 +7,6 @@ const cors = require('cors');
 const db = require('./mongoDB/dbConnection');
 const feedBackController = require('./mongoDB/controllers/feedbackController');
 
-// test counter fetch
-// const counterController = require("./mongoDB/controllers/counterController");
-// console.log("here" + counterController.getCounter());
 
 const app = express();
 let logger = serverlogger.log;
@@ -25,9 +22,7 @@ const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
 const counterRouter = require('./routers/counterRouter');
 
-//user
 // We moved the function to feedback router since we won't check it by JSON, but IAM's API OR our DB.
-// app.use('/emailCheck', userRouter);
 
 //feedback
 app.use('/users', feedbackRouter);
